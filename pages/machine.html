@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Machine Learning - Gemba Indonesia Karya</title>
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
+  <style>
+    .ml-content {
+      max-width: 800px;
+      margin: 0 auto 3rem;
+      text-align: left;
+    }
+    .ml-content p {
+      margin-bottom: 1.5rem;
+      color: var(--gray-700);
+      font-size: 1.125rem;
+    }
+    .ml-content h3 {
+      color: var(--gemba);
+      margin: 2rem 0 1rem;
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+    .ml-content ul {
+      margin: 1rem 0;
+      padding-left: 2rem;
+    }
+    .ml-content li {
+      list-style: disc;
+      margin-bottom: 0.75rem;
+      color: var(--gray-700);
+      font-size: 1.125rem;
+    }
+    .ml-section {
+      background-color: var(--white);
+      padding: 3rem 0;
+      margin-bottom: 3rem;
+    }
+    .ml-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .ml-box {
+      background-color: var(--gemba-light);
+      padding: 1.5rem;
+      border-radius: var(--radius);
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .ml-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    }
+    .ml-icon {
+      background-color: var(--gemba);
+      color: var(--white);
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .ml-box h4 {
+      color: var(--gemba);
+      margin-bottom: 0.5rem;
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+    .ml-box p {
+      color: var(--gray-700);
+      font-size: 1rem;
+    }
+    @media (min-width: 768px) {
+      .ml-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (min-width: 1024px) {
+      .ml-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav id="navbar">
+    <div class="container">
+      <a href="../index.html" class="logo">
+        <svg class="briefcase-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect>
+          <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+        </svg>
+        <span>Gemba Indonesia Karya</span>
+      </a>
+      <button class="menu-toggle" id="menuToggle">
+        <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="4" x2="20" y1="12" y2="12"></line>
+          <line x1="4" x2="20" y1="6" y2="6"></line>
+          <line x1="4" x2="20" y1="18" y2="18"></line>
+        </svg>
+      </button>
+      <div class="nav-links" id="navLinks">
+        <a href="../index.html">Home</a>
+        <a href="../index.html#about">About</a>
+        <div class="dropdown">
+          <a href="../index.html#services" class="dropdown-toggle">Services</a>
+          <div class="dropdown-menu">
+            <a href="strategy.html">STRATEGY</a>
+            <a href="training.html">TRAININGS</a>
+            <a href="clients.html">OUR CLIENTS</a>
+            <a href="kpi.html">KPI PERFORMANCE</a>
+            <a href="machine.html">MACHINE LEARNING</a>
+          </div>
+        </div>
+        <a href="../index.html#contact">Contact</a>
+      </div>
+      <div class="mobile-menu" id="mobileMenu">
+        <div class="container">
+          <a href="../index.html" class="mobile-link">Home</a>
+          <a href="../index.html#about" class="mobile-link">About</a>
+          <div class="dropdown">
+            <a href="../index.html#services" class="dropdown-toggle mobile-link">Services</a>
+            <div class="dropdown-menu">
+              <a href="strategy.html">STRATEGY</a>
+              <a href="training.html">TRAININGS</a>
+              <a href="clients.html">OUR CLIENTS</a>
+              <a href="kpi.html">KPI PERFORMANCE</a>
+              <a href="machine.html">MACHINE LEARNING</a>
+            </div>
+          </div>
+          <a href="../index.html#contact" class="mobile-link">Contact</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Machine Learning Section -->
+  <section class="services-section">
+    <div class="container">
+      <div class="section-header animate-fade-in">
+        <h2>Machine Learning</h2>
+        <div class="section-divider"></div>
+        <p>A Catalyst for Continuous Improvement</p>
+      </div>
+      <div class="ml-content animate-fade-in">
+        <p>At Gemba Indonesia Karya, we help businesses unlock their full potential. Machine learning (ML) is a powerful tool for driving continuous improvement by enabling smarter, data-driven decisions that enhance operational efficiency and elevate customer satisfaction.</p>
+
+        <h3>What is Machine Learning?</h3>
+        <p>Machine learning is a branch of artificial intelligence that allows systems to learn from data and make predictions without explicit programming. By analyzing vast amounts of data, ML uncovers patterns and trends that would otherwise be challenging to detect, empowering businesses to optimize processes and anticipate future needs.</p>
+
+        <h3>Machine Learning and Continuous Improvement</h3>
+        <p>At the core of every successful transformation is a culture of continuous improvement. Machine learning supports this culture by providing key capabilities outlined below.</p>
+
+        <h3>Improving Customer Satisfaction with Forecasting</h3>
+        <p>Machine learning’s forecasting capabilities play a pivotal role in improving customer satisfaction. By predicting future trends, businesses can:</p>
+        <ul>
+          <li>Predict Customer Behavior: ML analyzes past interactions to forecast customer actions, helping businesses personalize offers, optimize inventory, and improve customer service.</li>
+          <li>Anticipate Market Trends: ML forecasts market shifts, giving businesses the flexibility to adjust their strategies or operations ahead of time, ensuring they stay competitive and responsive to changing needs.</li>
+        </ul>
+
+        <h3>Driving Results through Data-Driven Insights</h3>
+        <p>Machine learning doesn’t just automate tasks—it empowers businesses to continually refine their operations. By delivering accurate forecasts and identifying areas for improvement, ML helps businesses stay ahead of the curve, delivering better results and improving the path toward achieving their goals.</p>
+
+        <h3>Conclusion: Machine Learning as a Continuous Improvement Tool</h3>
+        <p>Machine learning is an invaluable asset for businesses committed to continuous improvement. With its ability to forecast trends, automate tasks, and optimize processes, ML helps companies stay agile, improve performance, and meet customer needs with precision. At Gemba Indonesia Karya, we integrate ML into your transformation journey, ensuring that your organization’s full potential is unlocked.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Machine Learning Key Capabilities Section -->
+  <section class="ml-section">
+    <div class="container">
+      <div class="ml-grid animate-fade-in">
+        <div class="ml-box">
+          <div class="ml-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v4m0 12v4M2 12h4m12 0h4"></path>
+              <circle cx="12" cy="12" r="4"></circle>
+            </svg>
+          </div>
+          <div>
+            <h4>Automation of Routine Tasks</h4>
+            <p>ML streamlines processes, reducing manual work and freeing up resources for more strategic activities.</p>
+          </div>
+        </div>
+        <div class="ml-box">
+          <div class="ml-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 3h18v18H3z"></path>
+              <path d="M12 8v8"></path>
+              <path d="M8 12h8"></path>
+            </svg>
+          </div>
+          <div>
+            <h4>Identifying Inefficiencies</h4>
+            <p>ML analyzes data in real-time, highlighting areas of inefficiency or underperformance, and suggesting actionable improvements.</p>
+          </div>
+        </div>
+        <div class="ml-box">
+          <div class="ml-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path>
+              <line x1="4" y1="22" x2="4" y2="15"></line>
+            </svg>
+          </div>
+          <div>
+            <h4>Forecasting</h4>
+            <p>ML excels at predicting future trends based on historical data, enabling demand forecasting, stock management, and customer behavior analysis.</p>
+          </div>
+        </div>
+        <div class="ml-box">
+          <div class="ml-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+          </div>
+          <div>
+            <h4>Performance Monitoring</h4>
+            <p>ML tracks performance over time, allowing quick course corrections to keep improvement initiatives on track.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chatbot -->
+  <div class="chatbot-container">
+    <div class="chatbot-panel hidden" id="chatbotPanel">
+      <div class="chatbot-header">
+        <div class="chatbot-title">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 8V4H8"></path>
+            <rect width="16" height="12" x="4" y="8" rx="2"></rect>
+            <path d="M2 14h2"></path>
+            <path d="M20 14h2"></path>
+            <path d="M15 13v2"></path>
+            <path d="M9 13v2"></path>
+          </svg>
+          <span>Gemba Assistant</span>
+        </div>
+        <button id="closeChatbot">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 6 6 18"></path>
+            <path d="m6 6 12 12"></path>
+          </svg>
+        </button>
+      </div>
+
+      <div class="chatbot-messages" id="chatbotMessages">
+        <div class="message assistant">
+          <div class="message-content">
+            Hello! I'm the Gemba Indonesia virtual assistant. How can I help you today?
+          </div>
+        </div>
+      </div>
+
+      <div class="chatbot-input">
+        <form id="chatbotForm">
+          <input type="text" id="userInput" placeholder="Type a message...">
+          <button type="submit">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m22 2-7 20-4-9-9-4Z"></path>
+              <path d="M22 2 11 13"></path>
+            </svg>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="chatbot-button" id="chatbotButton">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2v5Z"></path>
+        <path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1"></path>
+      </svg>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-about">
+          <h3>Gemba Indonesia Karya</h3>
+          <p>Transforming businesses through expert consulting and operational excellence, delivering tailored solutions to meet your unique challenges.</p>
+          <div class="social-links">
+            <a href="#" class="social-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+              </svg>
+            </a>
+            <a href="#" class="social-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+              </svg>
+            </a>
+            <a href="#" class="social-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+              </svg>
+            </a>
+            <a href="#" class="social-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect width="4" height="12" x="2" y="9"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© <span id="currentYear"></span> Gemba Indonesia Karya. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>
