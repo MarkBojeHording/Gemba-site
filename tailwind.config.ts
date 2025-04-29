@@ -1,4 +1,4 @@
-
+import animate from "tailwindcss-animate";
 import type { Config } from "tailwindcss";
 
 export default {
@@ -83,21 +83,21 @@ export default {
 					}
 				},
 				'fade-in': {
-					'0%': { 
-						opacity: '0' 
+					'0%': {
+						opacity: '0'
 					},
-					'100%': { 
-						opacity: '1' 
+					'100%': {
+						opacity: '1'
 					},
 				},
 				'slide-in': {
-					'0%': { 
+					'0%': {
 						transform: 'translateY(20px)',
-						opacity: '0' 
+						opacity: '0'
 					},
-					'100%': { 
+					'100%': {
 						transform: 'translateY(0)',
-						opacity: '1' 
+						opacity: '1'
 					},
 				}
 			},
@@ -109,5 +109,5 @@ export default {
 			}
 		}
 	},
-	plugins: [require("tailwindcss-animate")],
+	plugins: [animate],
 } satisfies Config;
