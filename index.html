@@ -11,287 +11,366 @@
   <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
 </head>
 <body>
-  <!-- Navbar -->
-  <nav id="navbar">
-    <div class="container">
-      <a href="index.html" class="logo">
-        <svg class="briefcase-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect>
-          <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-        </svg>
-        <span>Gemba Indonesia Karya</span>
-      </a>
+<!-- Navbar -->
+<nav id="navbar">
+  <div class="container">
+    <a href="index.html" class="logo">
+      <img src="images/LOGO_white.png" alt="Gemba Indonesia Karya Logo" class="logo-image" />
+    </a>
 
-      <div class="nav-links" id="navLinks">
-        <a href="index.html#home">Home</a>
-        <a href="index.html#about">About</a>
-        <div class="dropdown">
-          <a href="index.html#services" class="dropdown-toggle">Services</a>
-          <div class="dropdown-menu">
-            <a href="pages/strategy.html">STRATEGY</a>
-            <a href="pages/training.html">TRAININGS</a>
-            <a href="pages/clients.html">OUR CLIENTS</a>
-            <a href="pages/kpi.html">KPI PERFORMANCE</a>
-            <a href="pages/machine.html">MACHINE LEARNING</a>
-          </div>
-        </div>
-        <a href="index.html#contact">Contact</a>
-      </div>
-
-      <button class="menu-toggle" id="menuToggle">
-        <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="4" x2="20" y1="12" y2="12"></line>
-          <line x1="4" x2="20" y1="6" y2="6"></line>
-          <line x1="4" x2="20" y1="18" y2="18"></line>
-        </svg>
-      </button>
-    </div>
-
-    <!-- Mobile menu -->
-    <div class="mobile-menu" id="mobileMenu">
-      <div class="container">
-        <a href="index.html#home" class="mobile-link">Home</a>
-        <a href="index.html#about" class="mobile-link">About</a>
-        <div class="dropdown">
-          <a href="index.html#services" class="mobile-link dropdown-toggle">Services</a>
-          <div class="dropdown-menu">
-            <a href="pages/strategy.html">Business Strategy</a>
-            <a href="pages/training.html">Operational Excellence</a>
-            <a href="pages/clients.html">Process Optimization</a>
-            <a href="pages/kpi.html">Financial Analysis</a>
-            <a href="pages/machine.html">Training & Development</a>
-          </div>
-        </div>
-        <a href="index.html#contact" class="mobile-link">Contact</a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Hero Section -->
-  <section id="home" class="hero-section">
-    <div class="container">
-      <div class="hero-content">
-        <h1 class="animate-fade-in">Transforming Businesses Through Expert Consulting</h1>
-        <p class="animate-fade-in">Gemba Indonesia Karya provides top-tier consulting services to help your business achieve operational excellence and sustainable growth</p>
-        <div class="hero-buttons animate-fade-in">
-          <a href="index.html#services" class="btn btn-primary">
-            Our Services
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M5 12h14"></path>
-              <path d="m12 5 7 7-7 7"></path>
-            </svg>
-          </a>
-          <a href="index.html#contact" class="btn btn-outline">Contact Us</a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html#home">Home</a>
+      <a href="index.html#about">About</a>
+      <div class="dropdown">
+        <a href="index.html#services" class="dropdown-toggle">Services</a>
+        <div class="dropdown-menu">
+          <a href="pages/strategy.html">STRATEGY</a>
+          <a href="pages/training.html">TRAININGS</a>
+          <a href="pages/kpi.html">KPI/IMPROVEMENT PROJECTS</a>
+          <a href="pages/driving.html">DRIVING CHANGE</a>
+          <a href="pages/lean.html">LEAN MANAGEMENT</a>
+          <a href="pages/machine.html">MACHINE LEARNING</a>
+          <a href="pages/clients.html">OUR CLIENTS</a>
         </div>
       </div>
+      <a href="index.html#contact">Contact</a>
     </div>
-  </section>
 
-  <!-- About Section -->
-  <section id="about" class="about-section">
+    <button class="menu-toggle" id="menuToggle">
+      <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="4" x2="20" y1="12" y2="12"></line>
+        <line x1="4" x2="20" y1="6" y2="6"></line>
+        <line x1="4" x2="20" y1="18" y2="18"></line>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu">
     <div class="container">
-      <div class="section-header">
-        <h2>About Gemba Indonesia Karya</h2>
-        <div class="section-divider"></div>
+      <a href="index.html#home" class="mobile-link">Home</a>
+      <a href="index.html#about" class="mobile-link">About</a>
+      <div class="dropdown">
+        <a href="index.html#services" class="mobile-link dropdown-toggle">Services</a>
+        <div class="dropdown-menu">
+          <a href="pages/strategy.html">STRATEGY</a>
+          <a href="pages/training.html">TRAININGS</a>
+          <a href="pages/kpi.html">KPI/IMPROVEMENT PROJECTS</a>
+          <a href="pages/driving.html">DRIVING CHANGE</a>
+          <a href="pages/lean.html">LEAN MANAGEMENT</a>
+          <a href="pages/machine.html">MACHINE LEARNING</a>
+          <a href="pages/clients.html">OUR CLIENTS</a>
+        </div>
       </div>
+      <a href="index.html#contact" class="mobile-link">Contact</a>
+    </div>
+  </div>
+</nav>
 
-      <div class="about-content">
-        <div class="about-text">
-          <h3>Who We Are</h3>
-          <p>
-            Niels Henrik Krogh has with over 35 years of experience been a proven leader in Business Transformation.
-            Niels Henrik Krogh is a certified Six Sigma Master Black Belt, and has throughout his career successfully driven change across various industries, delivering impactful results for some of the world’s leading companies.
-            <p>Niel's experience spans industries such as:</p>
-          </p>
-          <div class="company-list">
-            <ul>
-              <li>
-                <span class="company">Bang & Olufsen</span>
-                <span class="country">(Denmark)</span> –
-                <span class="industry">Electronics</span>
-              </li>
-              <li>
-                <span class="company">Nokia</span>
-                <span class="country">(Finland)</span> –
-                <span class="industry">Electronics</span>
-              </li>
-              <li>
-                <span class="company">Volvo Trucks</span>
-                <span class="country">(Sweden)</span> –
-                <span class="industry">Automotive</span>
-              </li>
-              <li>
-                <span class="company">Maersk Line</span>
-                <span class="country">(Denmark)</span> –
-                <span class="industry">Shipping & Logistics</span>
-              </li>
-              <li>
-                <span class="company">Salam Pacific Indonesia Lines</span>
-                <span class="country">(Indonesia)</span> –
-                <span class="industry">Shipping & Logistics</span>
-              </li>
-              <li>
-                <span class="company">Sango Ceramics</span>
-                <span class="country">(Indonesia)</span> –
-                <span class="industry">Ceramics & Furniture</span>
-              </li>
-            </ul>
-          </div>
+<!-- Hero Section -->
+<section id="home" class="hero-section">
+  <div class="container">
+    <div class="hero-content">
+      <h1 class="animate-fade-in">Unleashing Your Potential, Empowering Your Future</h1>
+      <p class="animate-fade-in">Gemba Indonesia Karya will work with you to reach your full potential, elevating your business to new heights of performance, collaboration, and customer success.
+      </p>
+      <div class="hero-buttons animate-fade-in">
+        <a href="index.html#services" class="btn btn-primary">
+          Our Services
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14"></path>
+            <path d="m12 5 7 7-7 7"></path>
+          </svg>
+        </a>
+        <a href="index.html#contact" class="btn btn-outline">Contact Us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="about-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>About Gemba Indonesia Karya</h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="about-content">
+      <div class="about-text">
+        <h3>Who We Are</h3>
+        <div class="about-flex-row">
+          <!-- Image on the left -->
+          <img src="images/Henrik.jpeg" alt="Niels Henrik Krogh" class="henrik-img" />
+          <!-- Text on the right -->
+          <div>
             <p>
-            As a co-founder of Gemba Indonesia Karya, Niels brings a wealth of expertise and a hands-on approach to driving transformation. His deep understanding of global organizations and general cross-industry experience allows him to provide tailored solutions that make a lasting impact.
-          </p>
-            <p>Recently, Niels has been driving several major projects focusing on incorporating AI and Machine Learning into business operations, achieving substantial improvements in areas such as forecasting, simulations, and decision-making tools. By leveraging cutting-edge technology, Niels continues to push the boundaries of innovation to help organizations unlock new potential and deliver results in an increasingly data-driven world.
-            To support Niels, we collaborate with a network of highly skilled freelance consultants. These experts bring specialized knowledge to each project, allowing us to tailor our resources to the specific needs of our clients. Depending on the requirements of each individual project, we bring in the right experts to ensure optimal results.
-          </p>
-          <div class="stats-container">
-            <div class="stat-item">
-              <div class="stat-number">10+</div>
-              <div class="stat-label">Years Experience</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-number">200+</div>
-              <div class="stat-label">Projects Completed</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-number">50+</div>
-              <div class="stat-label">Expert Consultants</div>
-            </div>
+              Niels Henrik Krogh has with over 35 years of experience been a proven leader in Business Transformation.
+              Niels Henrik Krogh is a certified Six Sigma Master Black Belt, and has throughout his career successfully driven change across various industries, delivering impactful results for some of the world's leading companies.
+            </p>
           </div>
         </div>
-
-        <div class="about-features">
-          <div class="feature-box">
-            <div class="icon-container">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="8" r="6"></circle>
-                <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"></path>
-              </svg>
-            </div>
-            <div>
-              <h4>Industry Expertise</h4>
-              <p>Our consultants bring specialized knowledge across manufacturing, supply chain, healthcare, financial services, and technology sectors.</p>
-            </div>
-          </div>
-
-          <div class="feature-box">
-            <div class="icon-container">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="m2 12 5.25 5 2.25-3H19a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v6Z"></path>
-                <path d="m16 10 2 2-2 2"></path>
-              </svg>
-            </div>
-            <div>
-              <h4>Results-Driven Approach</h4>
-              <p>We focus on delivering measurable outcomes that directly impact your bottom line through practical, implementable solutions.</p>
-            </div>
-          </div>
-
-          <div class="feature-box">
-            <div class="icon-container">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 21" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M14 19a6 6 0 0 0-12 0"></path>
-                <circle cx="8" cy="9" r="4"></circle>
-                <path d="M22 19a6 6 0 0 0-6-6 4 4 0 1 0 0-8"></path>
-              </svg>
-            </div>
-            <div>
-              <h4>Client Partnership</h4>
-              <p>We work alongside your team, transferring knowledge and building capabilities to ensure sustainable success long after our engagement ends.</p>
-            </div>
+        <p>Niel's experience spans industries such as:</p>
+        <div class="company-list">
+          <div class="company-list">
+            <img src="images/companies.png" alt="Companies" class="companies-img" />
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Services Section -->
-  <section id="services" class="services-section">
-    <div class="container">
-      <div class="section-header">
-        <h2>Our Services</h2>
-        <div class="section-divider"></div>
-        <p>
-          We offer comprehensive consulting services designed to drive meaningful business transformation.
-          Our expert team delivers customized solutions tailored to your specific challenges.
+        <br>
+          <p>
+          As a co-founder of Gemba Indonesia Karya, Niels brings a wealth of expertise and a hands-on approach to driving transformation. His deep understanding of global organizations and general cross-industry experience allows him to provide tailored solutions that make a lasting impact.
         </p>
-      </div>
-
-      <div class="services-grid">
-        <div class="service-card">
-          <div class="service-icon">
+          <p>Recently, Niels has been driving several major projects focusing on incorporating AI and Machine Learning into business operations, achieving substantial improvements in areas such as forecasting, simulations, and decision-making tools. By leveraging cutting-edge technology, Niels continues to push the boundaries of innovation to help organizations unlock new potential and deliver results in an increasingly data-driven world.
+          <br></br>
+          To support Niels, we collaborate with a network of highly skilled freelance consultants. These experts bring specialized knowledge to each project, allowing us to tailor our resources to the specific needs of our clients. Depending on the requirements of each individual project, we bring in the right experts to ensure optimal results.
+        </p>
+        </div>
+      <div class="about-features">
+        <div class="feature-box">
+          <div class="icon-container">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect>
-              <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+              <circle cx="12" cy="8" r="6"></circle>
+              <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"></path>
             </svg>
           </div>
-          <h3>Business Strategy</h3>
-          <p>Develop comprehensive business strategies aligned with your long-term vision and market opportunities.</p>
+          <div>
+            <h4>Industry Expertise</h4>
+            <p>Our consultants bring specialized knowledge across manufacturing, supply chain, healthcare and transportation.</p>
+          </div>
         </div>
 
-        <div class="service-card">
-          <div class="service-icon">
+        <div class="feature-box">
+          <div class="icon-container">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect width="20" height="14" x="2" y="5" rx="2"></rect>
-              <line x1="2" x2="22" y1="10" y2="10"></line>
-              <line x1="7" x2="7" y1="5" y2="19"></line>
+              <path d="m2 12 5.25 5 2.25-3H19a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v6Z"></path>
+              <path d="m16 10 2 2-2 2"></path>
             </svg>
           </div>
-          <h3>Operational Excellence</h3>
-          <p>Optimize your operations through lean management practices, reducing waste and maximizing efficiency.</p>
+          <div>
+            <h4>Results-Driven Approach</h4>
+            <p>We focus on delivering measurable outcomes that directly impact your bottom line through practical, implementable solutions.</p>
+          </div>
         </div>
 
-        <div class="service-card">
-          <div class="service-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M15 12 9 6l-5 5 5 5 6-6"></path>
-              <path d="M9 6c0 9 4 12 12 12"></path>
+        <div class="feature-box">
+          <div class="icon-container">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 21" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 19a6 6 0 0 0-12 0"></path>
+              <circle cx="8" cy="9" r="4"></circle>
+              <path d="M22 19a6 6 0 0 0-6-6 4 4 0 1 0 0-8"></path>
             </svg>
           </div>
-          <h3>Process Optimization</h3>
-          <p>Identify bottlenecks and streamline processes to improve productivity and quality across your organization.</p>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M3 3v18h18"></path>
-              <path d="m19 9-5 5-4-4-3 3"></path>
-            </svg>
+          <div>
+            <h4>Client Partnership</h4>
+            <p>We work alongside your team, transferring knowledge and building capabilities to ensure sustainable success long after our engagement ends.</p>
           </div>
-          <h3>Financial Analysis</h3>
-          <p>In-depth financial assessments to identify opportunities for cost reduction and profit improvement.</p>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-            </svg>
-          </div>
-          <h3>Training & Development</h3>
-          <p>Custom training programs to build capabilities within your team, ensuring sustainable performance.</p>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 2v5"></path>
-              <path d="m19.73 7.73-.73.73"></path>
-              <path d="M22 12h-5"></path>
-              <path d="m19.73 16.27-.73-.73"></path>
-              <path d="M12 22v-5"></path>
-              <path d="m4.27 16.27.73-.73"></path>
-              <path d="M2 12h5"></path>
-              <path d="m4.27 7.73.73.73"></path>
-            </svg>
-          </div>
-          <h3>Innovation Management</h3>
-          <p>Implement frameworks to cultivate innovation and bring new ideas to market efficiently.</p>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
+<!-- Project Examples Section -->
+<section id="projects" class="projects-section">
+  <div class="container">
+    <div class="section-header animate-fade-in">
+      <h2>Our Impact: Driving Transformation Across Industries</h2>
+      <div class="section-divider"></div>
+      <p>
+        At Gemba Indonesia Karya, we partner with organizations to unlock their full potential and achieve measurable success. Our team has been involved in a variety of business transformation projects across different sectors, helping clients optimize operations, improve efficiency, and deliver exceptional results. Whether it’s refining processes, implementing new systems, or utilizing advanced technologies like AI and machine learning, we ensure that our clients stay ahead of the curve in a fast-changing world.
+      </p>
+    </div>
+
+    <!-- Logistics Container (Horizontal) -->
+    <div class="industry-container logistics-container animate-fade-in">
+      <div class="industry-header">
+        <h3>Logistics</h3>
+        <div class="industry-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+          </svg>
+        </div>
+      </div>
+      <div class="project-list">
+        <ul>
+          <li>Merger of two companies, integrating systems, processes, and people.</li>
+          <li>Implemented a new system to accelerate quotation times.</li>
+          <li>Developed a new, agile booking uptake process.</li>
+          <li>Introduced dynamic pricing strategies.</li>
+          <li>Set up system maps and a KPI system to enhance performance tracking.</li>
+          <li>Mapped customer journeys and internal processes for improved efficiency.</li>
+          <li>Supported a startup with value proposition, market analysis, SWOT, and marketing plans.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Grid for Other Industries -->
+    <div class="industry-grid">
+      <!-- Manufacturing Container -->
+      <div class="industry-container animate-fade-in">
+        <div class="industry-header">
+          <h3>Manufacturing</h3>
+          <div class="industry-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 20h.01"></path>
+              <path d="M7 20h.01"></path>
+              <path d="M12 20h.01"></path>
+              <path d="M17 20h.01"></path>
+              <path d="M22 20h.01"></path>
+              <path d="M2 16l2-8h16l2 8H2z"></path>
+              <path d="M12 16v-5"></path>
+              <path d="M9 11l3-3 3 3"></path>
+            </svg>
+          </div>
+        </div>
+        <div class="project-list">
+          <ul>
+            <li>Created visual boards and an operational system to streamline processes.</li>
+            <li>Achieved significant productivity and efficiency gains.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Health Care Container -->
+      <div class="industry-container animate-fade-in">
+        <div class="industry-header">
+          <h3>Health Care</h3>
+          <div class="industry-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path>
+              <path d="M12 8v8"></path>
+              <path d="M8 12h8"></path>
+            </svg>
+          </div>
+        </div>
+        <div class="project-list">
+          <ul>
+            <li>Established a Business Improvement function in a new hospital, implementing KPIs and an operating system.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Shipping Container -->
+      <div class="industry-container animate-fade-in">
+        <div class="industry-header">
+          <h3>Shipping</h3>
+          <div class="industry-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 21h20"></path>
+              <path d="M5 21V10h14v11"></path>
+              <path d="M5 10l7-7 7 7"></path>
+              <path d="M9 6h6"></path>
+            </svg>
+          </div>
+        </div>
+        <div class="project-list">
+          <ul>
+            <li>Developed advanced automated solutions using AI and Machine Learning for forecasting, network optimization, and equipment management.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Various Industries Container -->
+      <div class="industry-container animate-fade-in">
+        <div class="industry-header">
+          <h3>Various Industries</h3>
+          <div class="industry-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+              <path d="M2 12h20"></path>
+            </svg>
+          </div>
+        </div>
+        <div class="project-list">
+          <ul>
+            <li>Delivered an extensive Lean Six Sigma training program.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="closing-text animate-fade-in">
+      <p>
+        Each of these projects reflects our commitment to creating lasting improvements that drive sustainable growth. By combining industry expertise with a hands-on, collaborative approach, we work closely with our clients to deliver tailored solutions that meet their specific needs and objectives. Whether it's streamlining logistics, enhancing manufacturing processes, or implementing cutting-edge technologies, we help businesses not only achieve success today but also build a foundation for future growth.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Services Section -->
+<section id="services" class="services-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Our Services</h2>
+      <div class="section-divider"></div>
+      <p>
+        We offer comprehensive consulting services designed to drive meaningful business transformation.
+        Our expert team delivers customized solutions tailored to your specific challenges.
+      </p>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect>
+            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+          </svg>
+        </div>
+        <h3>Business Strategy</h3>
+        <p>Develop comprehensive business strategies aligned with your long-term vision and market opportunities.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect width="20" height="14" x="2" y="5" rx="2"></rect>
+            <line x1="2" x2="22" y1="10" y2="10"></line>
+            <line x1="7" x2="7" y1="5" y2="19"></line>
+          </svg>
+        </div>
+        <h3>Operational Excellence</h3>
+        <p>Optimize your operations through lean management practices, reducing waste and maximizing efficiency.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M15 12 9 6l-5 5 5 5 6-6"></path>
+            <path d="M9 6c0 9 4 12 12 12"></path>
+          </svg>
+        </div>
+        <h3>Process Optimization</h3>
+        <p>Identify bottlenecks and streamline processes to improve productivity and quality across your organization.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 3v18h18"></path>
+            <path d="m19 9-5 5-4-4-3 3"></path>
+          </svg>
+        </div>
+        <h3>Training & Development</h3>
+        <p>Custom training programs to build capabilities within your team, ensuring sustainable performance.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2v5"></path>
+            <path d="m19.73 7.73-.73.73"></path>
+            <path d="M22 12h-5"></path>
+            <path d="m19.73 16.27-.73-.73"></path>
+            <path d="M12 22v-5"></path>
+            <path d="m4.27 16.27.73-.73"></path>
+            <path d="M2 12h5"></path>
+            <path d="m4.27 7.73.73.73"></path>
+          </svg>
+        </div>
+        <h3>Innovation Management</h3>
+        <p>Implement frameworks to cultivate innovation and bring new ideas to market efficiently.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
   <!-- Contact Section -->
   <section id="contact" class="contact-section">
@@ -347,7 +426,7 @@
               </div>
               <div>
                 <h4>Our Office</h4>
-                <p>Jakarta, Indonesia</p>
+                <p>Semerang, Indonesia</p>
               </div>
             </div>
 
@@ -440,13 +519,14 @@
     </div>
   </div>
 
- <!-- Footer -->
- <footer class="footer">
+<!-- Footer -->
+<footer class="footer">
   <div class="container">
     <div class="footer-content">
       <div class="footer-about">
-        <h3>Gemba Indonesia Karya</h3>
-        <p>Transforming businesses through expert consulting and operational excellence, delivering tailored solutions to meet your unique challenges.</p>
+        <h3> Unleashing Your Potential, Empowering Your Future.</h3>
+        <p>Gemba Indonesia Karya will work with you to reach your full potential, elevating your business to new heights of performance, collaboration, and customer success.</p>
+        </p>
         <div class="social-links">
           <a href="#" class="social-link">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -466,7 +546,7 @@
             </svg>
           </a>
           <a href="#" class="social-link">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg Bloomington" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
               <rect width="4" height="12" x="2" y="9"></rect>
               <circle cx="4" cy="4" r="2"></circle>

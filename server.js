@@ -2,6 +2,8 @@ import express from 'express';
 import dotenv from 'dotenv';
 import axios from 'axios';
 import cors from 'cors';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 dotenv.config();
 console.log('API Key:', process.env.OPENAI_API_KEY ? 'Loaded' : 'Not found');
@@ -9,11 +11,19 @@ console.log('API Key:', process.env.OPENAI_API_KEY ? 'Loaded' : 'Not found');
 const app = express();
 const port = process.env.PORT || 3000;
 
+// These two lines are needed for __dirname in ES modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 app.use(cors());
 app.use(express.json());
 
-app.get('/', (req, res) => {
-  res.json({ message: 'Gemba Indonesia Karya Chatbot API is running. Use POST /api/chat for chatbot requests.' });
+// Serve static files from the 'dist' directory
+app.use(express.static(path.join(__dirname, 'dist')));
+
+// For any route not handled by your API, serve index.html (for React Router)
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
 app.post('/api/chat', async (req, res) => {

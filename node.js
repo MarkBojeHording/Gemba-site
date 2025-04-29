@@ -1,5 +1,7 @@
-const express = require('express');
-const axios = require('axios');
+// ... existing code ...
+import express from 'express';
+import axios from 'axios';
+
 const app = express();
 app.use(express.json());
 
@@ -22,4 +24,11 @@ app.post('/api/chat', async (req, res) => {
   }
 });
 
-app.listen(3000);
+app.get('/', (req, res) => {
+  res.send('Server is running!');
+});
+
+app.listen(3001, () => {
+  console.log('Server running on port 3001');
+});
+// ... existing code ...
