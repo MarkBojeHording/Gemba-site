@@ -1,22 +1,23 @@
-import animate from "tailwindcss-animate";
-
 document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-  const navbar = document.getElementById('navbar');
   const menuToggle = document.getElementById('menuToggle');
   const mobileMenu = document.getElementById('mobileMenu');
   const mobileLinks = document.querySelectorAll('.mobile-link');
+  const navbar = document.getElementById('navbar');
 
-  function handleScroll() {
-    if (window.scrollY > 50) {
-      navbar.classList.add('navbar-fixed');
-    } else {
-      navbar.classList.remove('navbar-fixed');
-    }
+function handleScroll() {
+  if (window.scrollY > 50) {
+    navbar.classList.add('navbar-fixed');
+  } else {
+    navbar.classList.remove('navbar-fixed');
   }
+}
 
-  window.addEventListener('scroll', handleScroll);
+window.addEventListener('scroll', handleScroll);
+handleScroll(); // Set initial state on page load
+
+
 
   menuToggle.addEventListener('click', function() {
     mobileMenu.classList.toggle('active');

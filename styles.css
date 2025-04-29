@@ -1188,6 +1188,15 @@ img.companies-img {
   margin-top: 3rem;
 }
 
+/* Make training gallery photos appear in a single row */
+.training-gallery .gallery-grid {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: nowrap; /* Prevent wrapping to a new line */
+}
+
 .training-gallery h3 {
   text-align: center;
   color: var(--gemba);
@@ -1475,6 +1484,97 @@ img.companies-img {
   text-shadow: 0 2px 12px rgba(0,0,0,0.5);
 }
 
+/* Dropdown container */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown toggle link */
+.dropdown-toggle {
+  color: #fff;
+  background: none;
+  border: none;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 10px 18px;
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.dropdown-toggle:hover,
+.dropdown-toggle:focus {
+  background: rgba(255,255,255,0.10);
+  color: #ffd600;
+}
+
+/* Dropdown menu */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 110%;
+  left: 0;
+  min-width: 180px;
+  background: #183153; /* Deep blue for contrast */
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.14), 0 1.5px 4px rgba(0,0,0,0.04);
+  z-index: 1000;
+  padding: 8px 0;
+  border: 1px solid #2563eb;
+  animation: dropdown-fade-in 0.18s;
+}
+
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-menu,
+.dropdown:focus-within .dropdown-menu {
+  display: block;
+}
+
+/* Dropdown menu links */
+.dropdown-menu a {
+  color: #fff;
+  padding: 10px 36px 10px 24px; /* Fixed left/right padding */
+  display: block;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  border-radius: 8px;
+  margin: 2px 8px;
+  transition: background 0.18s, color 0.18s;
+}
+
+
+.dropdown-menu a:hover,
+.dropdown-menu a:focus {
+  background: #2563eb;
+  color: #ffd600;
+}
+
+/* Optional: subtle animation */
+@keyframes dropdown-fade-in {
+  from { opacity: 0; transform: translateY(-8px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+
+/* Responsive: Hide dropdown on mobile, use your mobile menu instead */
+@media (max-width: 900px) {
+  .dropdown-menu {
+    position: static;
+    min-width: 0;
+    box-shadow: none;
+    border-radius: 0;
+    border: none;
+    background: #f9f9f9;
+    padding-left: 20px;
+    display: none;
+  }
+  .dropdown.active .dropdown-menu {
+    display: block;
+  }
+}
+
+
 @media (max-width: 900px) {
   .ml-photo-flex {
     flex-direction: column;
@@ -1489,6 +1589,38 @@ img.companies-img {
     height: 220px;
   }
 }
+
+/* Base navbar style */
+#navbar {
+  background: var(--gemba); /* or your original blue color */
+  transition: background 0.3s, box-shadow 0.3s;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+
+/* Navbar style when scrolled */
+
+/* Nav link colors */
+#navbar .nav-links a {
+  color: #fff;
+  transition: color 0.3s;
+}
+
+#navbar.navbar-fixed .nav-links a {
+  color: var(--gemba); /* Or use your preferred green, e.g. #1e7e34 */
+}
+
+.logo-image {
+  height: 2.5rem;
+  width: auto;
+  /* This filter makes the green logo appear white on blue */
+  filter: brightness(0) invert(1);
+  transition: filter 0.3s;
+}
+
 
 /* Special image positioning */
 .swot-image {
@@ -1563,81 +1695,6 @@ img.companies-img {
   text-align: center;
 }
 
-/* Dropdown Styling */
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropdown-toggle {
-  text-decoration: none;
-  color: #333;
-  font-weight: 500;
-  padding: 10px 15px;
-  transition: color 0.3s ease;
-}
-
-.dropdown-menu {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: #fff;
-  min-width: 200px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 4px;
-  z-index: 1000;
-}
-
-.dropdown-menu a {
-  display: block;
-  padding: 12px 15px;
-  color: #333;
-  text-decoration: none;
-  font-family: 'Poppins', sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  transition: background-color 0.3s ease;
-}
-
-.dropdown-menu a:hover {
-  background-color: #f5f5f5;
-}
-
-.dropdown:hover .dropdown-menu {
-  display: block;
-}
-
-/* Mobile Dropdown Styling */
-.mobile-menu .dropdown {
-  width: 100%;
-}
-
-.mobile-menu .dropdown-toggle {
-  display: block;
-  padding: 15px 0;
-  color: #333;
-  font-weight: 500;
-}
-
-.mobile-menu .dropdown-menu {
-  position: static;
-  box-shadow: none;
-  background-color: #f9f9f9;
-  padding-left: 20px;
-  display: none;
-}
-
-.mobile-menu .dropdown-menu a {
-  padding: 10px 0;
-  font-size: 14px;
-}
-
-/* Ensure mobile menu dropdown integrates with existing styles */
-.mobile-menu .dropdown.active .dropdown-menu {
-  display: block;
-}
-
 @media (min-width: 1024px) {
   .services-grid {
     grid-template-columns: repeat(3, 1fr);
@@ -1647,4 +1704,60 @@ img.companies-img {
 .briefcase-icon {
   width: 3.5rem;
   height: 3.5rem;
+}
+
+/* Always keep dropdown background dark and hover effect visible */
+
+/* Always use this style for the dropdown menu, regardless of scroll */
+.dropdown-menu {
+  background: #183153 !important;
+  color: #fff !important;
+  border-radius: 16px !important;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.14), 0 1.5px 4px rgba(0,0,0,0.04) !important;
+  padding: 8px 0 !important;
+  min-width: 180px !important;
+  border: none !important;
+}
+
+.dropdown-menu a {
+  color: #fff !important;
+  padding: 10px 36px 10px 24px !important;
+  display: block !important;
+  text-decoration: none !important;
+  font-weight: 500 !important;
+  font-size: 1rem !important;
+  border-radius: 8px !important;
+  margin: 2px 8px !important;
+  transition: background 0.18s, color 0.18s !important;
+}
+
+.dropdown-menu a:hover,
+.dropdown-menu a:focus {
+  background: #2563eb !important;
+  color: #ffd600 !important;
+}
+
+.training-gallery .gallery-card {
+  height: 260px;
+  min-width: 180px;
+  max-width: 220px;
+  flex: 0 0 220px; /* Ensures all cards are the same width in a row */
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+}
+
+.training-gallery .gallery-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Front page project gallery: 2 rows, 3 columns */
+.project-gallery .gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 2rem;
 }
