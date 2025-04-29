@@ -128,12 +128,12 @@ handleScroll(); // Set initial state on page load
         const typingIndicator = document.querySelector('.typing-indicator');
         if (typingIndicator) typingIndicator.remove();
         addMessage('assistant', response);
-        scrollChatToBottom();
+        scrollChatToLatest();
       } catch (error) {
         const typingIndicator = document.querySelector('.typing-indicator');
         if (typingIndicator) typingIndicator.remove();
         addMessage('assistant', 'Sorry, something went wrong. Please try again later.');
-        scrollChatToBottom();
+        scrollChatToLatest();
         console.error('Chatbot error:', error);
       }
     });
@@ -144,10 +144,13 @@ handleScroll(); // Set initial state on page load
     messageDiv.classList.add('message', role);
     const messageContent = document.createElement('div');
     messageContent.classList.add('message-content');
-    messageContent.textContent = content; // Use textContent to preserve newlines with CSS
+    messageContent.innerHTML = content
+    .split(/\n{2,}/) // Split on double newlines for paragraphs
+    .map(paragraph => `<p>${paragraph.replace(/\n/g, '<br>')}</p>`)
+    .join('');
     messageDiv.appendChild(messageContent);
     messagesContainer.appendChild(messageDiv);
-    scrollChatToBottom();
+    scrollChatToLatest(); // <-- Always call here
   }
 
   function showTypingIndicator() {
@@ -159,11 +162,15 @@ handleScroll(); // Set initial state on page load
       typingDiv.appendChild(dot);
     }
     messagesContainer.appendChild(typingDiv);
-    scrollChatToBottom();
+    scrollChatToLatest();
   }
 
-  function scrollChatToBottom() {
-    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+  function scrollChatToLatest() {
+    const messagesContainer = document.getElementById('chatbotMessages');
+    const lastMessage = messagesContainer.lastElementChild;
+    if (lastMessage) {
+      lastMessage.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   }
 
   async function getBotResponse(message) {

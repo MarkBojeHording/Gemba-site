@@ -44,7 +44,6 @@ app.post('/api/chat', async (req, res) => {
     6. Change Management
 
     Rules:
-    1. Always start with: Hello, I am the Gemba Indonesia SME chatbot, how may I assist you?
     2. Always provide short and precise answers to any questions.
     3. Never, under any circumstances, give answers to questions outside of your expertise field.
     4. Always finish off with asking if there are any other questions.
@@ -74,9 +73,9 @@ app.post('/api/chat', async (req, res) => {
     let botResponse = response.data.choices[0].message.content.trim();
 
     // Enforce rules: prepend greeting, append question, and enhance formatting
-    if (!botResponse.startsWith('Hello, I am the Gemba Indonesia SME chatbot')) {
-      botResponse = 'Hello, I am the Gemba Indonesia SME chatbot, how may I assist you?\n\n\n' + botResponse;
-    }
+    // if (!botResponse.startsWith('Hello, I am the Gemba Indonesia SME chatbot')) {
+    //   botResponse = 'Hello, I am the Gemba Indonesia SME chatbot, how may I assist you?\n\n\n' + botResponse;
+    // }
     if (!botResponse.endsWith('If you have any more questions, feel free to ask.')) {
       botResponse += '\n\n\nIf you have any more questions, feel free to ask.';
     }
