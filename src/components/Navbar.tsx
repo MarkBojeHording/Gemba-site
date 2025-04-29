@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Briefcase } from 'lucide-react';
 
@@ -16,51 +15,54 @@ const Navbar: React.FC = () => {
     };
 
     window.addEventListener('scroll', handleScroll);
-    
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
   return (
-    <nav className={`w-full py-4 transition-all duration-300 ${isScrolled ? 'navbar-fixed' : 'bg-gemba/90 absolute top-0 left-0 right-0 z-50'}`}>
-      <div className="container mx-auto px-4 flex justify-between items-center">
-        <a href="#" className="flex items-center space-x-3">
-          <Briefcase className="text-white w-10 h-10" />
-          <span className="text-2xl font-bold text-white">
-            Gemba Indonesia Karya
-          </span>
-        </a>
-        
-        <div className="hidden md:flex space-x-8">
-          {['Home', 'About', 'Services', 'Contact'].map((item) => (
-            <a 
-              key={item} 
-              href={`#${item.toLowerCase()}`}
-              className="text-white hover:text-gemba-secondary font-medium transition-colors"
-            >
-              {item}
-            </a>
-          ))}
+    <nav id="navbar">
+      <div className="navbar-flex">
+        <div className="navbar-left">
+          <a href="index.html" className="logo">
+            <img src="images/LOGO_white.png" alt="Gemba Indonesia Karya Logo" className="logo-image" />
+          </a>
         </div>
-        
-        <div className="md:hidden">
-          <button 
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="text-white focus:outline-none"
-          >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        <div className="navbar-center">
+          <span className="navbar-title">Gemba Indonesia Karya</span>
+        </div>
+        <div className="navbar-right">
+          <div className="nav-links" id="navLinks">
+            <a href="index.html#home">Home</a>
+            <a href="index.html#about">About</a>
+            <div className="dropdown">
+              <a href="index.html#services" className="dropdown-toggle">Services</a>
+              <div className="dropdown-menu">
+                {/* ... */}
+              </div>
+            </div>
+            <a href="index.html#contact">Contact</a>
+          </div>
+          <button className="menu-toggle" id="menuToggle">
+            <div className="md:hidden">
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="text-white focus:outline-none"
+              >
+                {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              </button>
+            </div>
           </button>
         </div>
       </div>
-
-      {/* Mobile menu */}
+      {/* Mobile menu here */}
       {isMenuOpen && (
         <div className="md:hidden bg-white absolute top-full left-0 right-0 shadow-md animate-fade-in">
           <div className="container mx-auto px-4 py-4">
             {['Home', 'About', 'Services', 'Contact'].map((item) => (
-              <a 
-                key={item} 
+              <a
+                key={item}
                 href={`#${item.toLowerCase()}`}
                 className="block py-2 text-gemba hover:text-gemba-secondary font-medium"
                 onClick={() => setIsMenuOpen(false)}
