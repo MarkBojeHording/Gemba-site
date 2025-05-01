@@ -181,7 +181,7 @@ handleScroll(); // Set initial state on page load
 
   async function getBotResponse(message) {
     try {
-      const response = await fetch('http://localhost:3000/api/chat', {
+      const response = await fetch('/.netlify/functions/chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

@@ -696,7 +696,7 @@ img.companies-img {
   position: fixed;
   bottom: 2rem;
   right: 2rem;
-  z-index: 40;
+  z-index: 1000 !important;
 }
 
 .chatbot-button {
@@ -733,6 +733,7 @@ img.companies-img {
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  z-index: 1000 !important;
 }
 
 .chatbot-panel.hidden {
