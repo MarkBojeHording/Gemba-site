@@ -14,6 +14,7 @@ export const handler = async (event, context) => {
 
     try {
         const { message } = JSON.parse(event.body);
+        console.log('Received message:', message);  // Add logging
 
         if (!message) {
             return {
@@ -38,6 +39,10 @@ export const handler = async (event, context) => {
             5. Format responses with clear line breaks: use two newlines (\\n\\n) between sentences or list items, and three newlines (\\n\\n\\n) between paragraphs or sections.
         `;
 
+        console.log('Making OpenAI API call...');  // Add logging
+
+        console.log('API Key available:', !!process.env.OPENAI_API_KEY);
+
         const response = await axios.post(
             'https://api.openai.com/v1/chat/completions',
             {
@@ -56,6 +61,8 @@ export const handler = async (event, context) => {
                 }
             }
         );
+
+        console.log('OpenAI API response received');  // Add logging
 
         let botResponse = response.data.choices[0].message.content.trim();
 
@@ -82,9 +89,14 @@ export const handler = async (event, context) => {
 
     } catch (error) {
         console.error('OpenAI API error:', error.response ? error.response.data : error.message);
+
+        // More detailed error response
         return {
             statusCode: 500,
-            body: JSON.stringify({ error: 'Failed to get response from AI' })
+            body: JSON.stringify({
+                error: 'Failed to get response from AI',
+                details: error.response ? error.response.data : error.message
+            })
         };
     }
 };
