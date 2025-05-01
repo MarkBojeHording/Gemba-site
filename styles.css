@@ -148,8 +148,7 @@ section {
   z-index: 50;
   transition: all 0.3s ease;
   background-color: var(--gemba);
-  height: var(--navbar-height);
-  min-height: var(--navbar-height);
+  height: auto; /* Remove fixed height */
 }
 
 #navbar.navbar-fixed {
@@ -179,7 +178,7 @@ section {
 }
 
 .logo-image {
-  height: 2.5rem;
+  height: 3.5rem;  /* Restore logo size */
   width: auto;
   filter: brightness(0) invert(1);
   transition: filter 0.3s ease;
@@ -698,13 +697,13 @@ img.companies-img {
   position: fixed;
   bottom: 2rem;
   right: 2rem;
-  z-index: 1000 !important;
+  z-index: 1000;
 }
 
 .chatbot-button {
-  width: 3.5rem;
-  height: 3.5rem;
-  background-color: #183153;  /* Gemba blue */
+  width: 4rem;
+  height: 4rem;
+  background-color: var(--gemba);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -723,24 +722,26 @@ img.companies-img {
 }
 
 .chatbot-panel {
-  position: absolute;
-  bottom: 5rem;
-  right: 0;
+  position: fixed;
+  bottom: 6rem;
+  right: 2rem;
   width: 24rem;
   height: 34rem;
-  max-height: calc(100vh - var(--navbar-height, 5rem) - 2rem); /* Account for navbar height and some padding */
-  top: calc(var(--navbar-height, 5rem) + 1rem); /* Position below navbar with some padding */
   background-color: white;
   border-radius: 0.75rem;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  transform-origin: bottom right;
+  transition: all 0.3s ease;
+  z-index: 1000;
 }
 
 .chatbot-panel.hidden {
   transform: scale(0);
   opacity: 0;
+  pointer-events: none;
 }
 
 .chatbot-header {

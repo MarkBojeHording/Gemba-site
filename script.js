@@ -105,7 +105,7 @@ handleScroll(); // Set initial state on page load
   const userInput = document.getElementById('userInput');
   const messagesContainer = document.getElementById('chatbotMessages');
 
-  if (chatbotButton) {
+  if (chatbotButton && chatbotPanel) {
     chatbotButton.addEventListener('click', function() {
       chatbotPanel.classList.toggle('hidden');
     });
