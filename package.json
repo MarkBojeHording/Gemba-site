@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "scripts": {
+"scripts": {
   "dev": "vite",
   "build": "vite build && cp -r pages dist/pages && cp styles.css dist/styles.css",
   "build:dev": "vite build",
