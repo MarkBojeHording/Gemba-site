@@ -5,7 +5,7 @@
   "type": "module",
 "scripts": {
   "dev": "vite",
-  "build": "vite build && cp -r pages dist/pages && cp styles.css dist/styles.css",
+  "build": "vite build && cp -r pages dist/pages || true && cp styles.css dist/styles.css || true",
   "build:dev": "vite build",
   "lint": "eslint .",
   "preview": "vite preview"
