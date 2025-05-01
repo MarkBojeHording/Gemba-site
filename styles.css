@@ -1836,6 +1836,64 @@ img.companies-img {
   display: block;
 }
 
+/* Change Management Page Styles */
+.change-management-showcase {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.showcase-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.change-model-visual {
+  margin: 2rem 0;
+  text-align: center;
+  background: var(--white);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.model-image {
+  max-width: 100%;
+  height: auto;
+}
+
+.change-services-images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.service-image {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.service-image:hover {
+  transform: translateY(-5px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .change-services-images {
+    grid-template-columns: 1fr;
+  }
+
+  .service-image {
+    height: 250px;
+  }
+}
+
 /* Front page project gallery: 2 rows, 3 columns */
 .project-gallery .gallery-grid {
   display: grid;
