@@ -98,20 +98,28 @@ handleScroll(); // Set initial state on page load
     });
   }
 
-  const chatbotButton = document.querySelector('.chatbot-button');
+  const chatbotButton = document.getElementById('chatbotButton');
   const chatbotPanel = document.getElementById('chatbotPanel');
   const closeChatbot = document.getElementById('closeChatbot');
   const chatbotForm = document.getElementById('chatbotForm');
   const userInput = document.getElementById('userInput');
   const messagesContainer = document.getElementById('chatbotMessages');
 
-  if (chatbotButton && chatbotPanel) {
-    chatbotButton.addEventListener('click', function() {
-      chatbotPanel.classList.toggle('hidden');
+  // Ensure chatbot is hidden initially
+  if (chatbotPanel) {
+    chatbotPanel.classList.add('hidden');
+  }
+
+  // Toggle chatbot
+  if (chatbotButton) {
+    chatbotButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      chatbotPanel.classList.remove('hidden');
     });
   }
 
-  if (closeChatbot && chatbotPanel) {
+  // Close chatbot
+  if (closeChatbot) {
     closeChatbot.addEventListener('click', function(e) {
       e.preventDefault();
       e.stopPropagation();
@@ -119,29 +127,51 @@ handleScroll(); // Set initial state on page load
     });
   }
 
+  // Close on escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && chatbotPanel && !chatbotPanel.classList.contains('hidden')) {
+      chatbotPanel.classList.add('hidden');
+    }
+  });
+
+  // Prevent panel click from bubbling
+  if (chatbotPanel) {
+    chatbotPanel.addEventListener('click', function(e) {
+      e.stopPropagation();
+    });
+  }
+
+  // Handle chat form submission
   if (chatbotForm) {
     chatbotForm.addEventListener('submit', async function(e) {
       e.preventDefault();
       const message = userInput.value.trim();
       if (!message) return;
 
+      // Add user message
       addMessage('user', message);
       userInput.value = '';
+
+      // Show typing indicator
       showTypingIndicator();
 
       try {
         const response = await getBotResponse(message);
+        // Remove typing indicator
         const typingIndicator = document.querySelector('.typing-indicator');
-        if (typingIndicator) typingIndicator.remove();
+        if (typingIndicator) {
+          typingIndicator.remove();
+        }
         addMessage('assistant', response);
-        scrollChatToLatest();
       } catch (error) {
+        console.error('Chat error:', error);
         const typingIndicator = document.querySelector('.typing-indicator');
-        if (typingIndicator) typingIndicator.remove();
+        if (typingIndicator) {
+          typingIndicator.remove();
+        }
         addMessage('assistant', 'Sorry, something went wrong. Please try again later.');
-        scrollChatToLatest();
-        console.error('Chatbot error:', error);
       }
+      scrollToBottom();
     });
   }
 
@@ -150,13 +180,10 @@ handleScroll(); // Set initial state on page load
     messageDiv.classList.add('message', role);
     const messageContent = document.createElement('div');
     messageContent.classList.add('message-content');
-    messageContent.innerHTML = content
-    .split(/\n{2,}/) // Split on double newlines for paragraphs
-    .map(paragraph => `<p>${paragraph.replace(/\n/g, '<br>')}</p>`)
-    .join('');
+    messageContent.textContent = content;
     messageDiv.appendChild(messageContent);
     messagesContainer.appendChild(messageDiv);
-    scrollChatToLatest(); // <-- Always call here
+    scrollToBottom();
   }
 
   function showTypingIndicator() {
@@ -168,37 +195,38 @@ handleScroll(); // Set initial state on page load
       typingDiv.appendChild(dot);
     }
     messagesContainer.appendChild(typingDiv);
-    scrollChatToLatest();
+    scrollToBottom();
   }
 
-  function scrollChatToLatest() {
-    const messagesContainer = document.getElementById('chatbotMessages');
-    const lastMessage = messagesContainer.lastElementChild;
-    if (lastMessage) {
-      lastMessage.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  }
-
-  async function getBotResponse(message) {
-    try {
-      const response = await fetch('/.netlify/functions/chat', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ message })
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.details || 'Failed to get response');
-      }
-
-      const data = await response.json();
-      return data.response;
-    } catch (error) {
-      console.error('Chatbot error:', error);
-      return "I apologize, but I'm having trouble connecting to my services right now. Please try again in a moment.";
+  function scrollToBottom() {
+    if (messagesContainer) {
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
     }
   }
 });
+
+// Separate API call function
+async function getBotResponse(message) {
+  try {
+    const response = await fetch('/.netlify/functions/chat', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ message })
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    if (data.error) {
+      throw new Error(data.error);
+    }
+    return data.response;
+  } catch (error) {
+    console.error('API Error:', error);
+    throw error;
+  }
+}

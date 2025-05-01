@@ -3,8 +3,8 @@ import axios from 'axios';
 
 dotenv.config();
 
-export const handler = async (event, context) => {
-    // Handle CORS preflight requests
+export const handler = async (event) => {
+    // Handle CORS
     if (event.httpMethod === 'OPTIONS') {
         return {
             statusCode: 200,
@@ -12,11 +12,11 @@ export const handler = async (event, context) => {
                 'Access-Control-Allow-Origin': '*',
                 'Access-Control-Allow-Headers': 'Content-Type',
                 'Access-Control-Allow-Methods': 'POST, OPTIONS'
-            },
-            body: ''
+            }
         };
     }
 
+    // Only allow POST
     if (event.httpMethod !== 'POST') {
         return {
             statusCode: 405,
@@ -25,8 +25,12 @@ export const handler = async (event, context) => {
     }
 
     try {
-        const { message } = JSON.parse(event.body);
+        // Validate API key
+        if (!process.env.OPENAI_API_KEY) {
+            throw new Error('OpenAI API key is not configured');
+        }
 
+        const { message } = JSON.parse(event.body);
         if (!message) {
             return {
                 statusCode: 400,
@@ -50,7 +54,7 @@ export const handler = async (event, context) => {
         const response = await axios.post(
             'https://api.openai.com/v1/chat/completions',
             {
-                model: 'gpt-3.5-turbo', // Using GPT-3.5-turbo instead of GPT-4
+                model: 'gpt-3.5-turbo',
                 messages: [
                     { role: 'system', content: systemPrompt },
                     { role: 'user', content: message }
@@ -66,30 +70,21 @@ export const handler = async (event, context) => {
             }
         );
 
-        let botResponse = response.data.choices[0].message.content.trim();
-
-        // Add a polite closing if not present
-        if (!botResponse.toLowerCase().includes('can i help')) {
-            botResponse += '\n\nIs there anything else I can help you with?';
-        }
-
         return {
             statusCode: 200,
             headers: {
                 'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*',
-                'Access-Control-Allow-Headers': 'Content-Type',
-                'Access-Control-Allow-Methods': 'POST, OPTIONS'
+                'Access-Control-Allow-Origin': '*'
             },
-            body: JSON.stringify({ response: botResponse })
+            body: JSON.stringify({
+                response: response.data.choices[0].message.content.trim()
+            })
         };
 
     } catch (error) {
-        console.error('Error details:', error);
+        console.error('Function error:', error);
 
-        // More detailed error handling
-        const errorMessage = error.response?.data?.error?.message || error.message || 'Unknown error occurred';
-
+        // Detailed error response
         return {
             statusCode: 500,
             headers: {
@@ -97,8 +92,9 @@ export const handler = async (event, context) => {
                 'Access-Control-Allow-Origin': '*'
             },
             body: JSON.stringify({
-                error: 'Failed to get response from AI',
-                details: errorMessage
+                error: 'Failed to process request',
+                details: error.message,
+                type: error.name
             })
         };
     }
