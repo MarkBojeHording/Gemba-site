@@ -1,11 +1,11 @@
 [build]
-  command = "npm run build"  # Run Vite build
-  functions = "functions"    # Match your functions directory
-  publish = "dist"           # Vite's output directory
+  command = "npm run build"
+  functions = "functions"
+  publish = "dist"
 
 [dev]
-  targetPort = 8080          # Match Vite's port from netlify dev output
-  port = 8888                # Netlify Dev's local server port
+  targetPort = 8080
+  port = 8888
 
 [[redirects]]
   from = "/*"
