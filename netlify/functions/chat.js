@@ -4,7 +4,19 @@ import axios from 'axios';
 dotenv.config();
 
 export const handler = async (event, context) => {
-    // Only allow POST requests
+    // Handle CORS preflight requests
+    if (event.httpMethod === 'OPTIONS') {
+        return {
+            statusCode: 200,
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Headers': 'Content-Type',
+                'Access-Control-Allow-Methods': 'POST, OPTIONS'
+            },
+            body: ''
+        };
+    }
+
     if (event.httpMethod !== 'POST') {
         return {
             statusCode: 405,
@@ -14,7 +26,6 @@ export const handler = async (event, context) => {
 
     try {
         const { message } = JSON.parse(event.body);
-        console.log('Received message:', message);  // Add logging
 
         if (!message) {
             return {
@@ -24,34 +35,27 @@ export const handler = async (event, context) => {
         }
 
         const systemPrompt = `
-            You are an expert in the following subjects:
-            1. AI
-            2. Machine Learning
-            3. Data Analysis
-            4. Lean and Six Sigma
-            5. Project Management
-            6. Change Management
+            You are a virtual assistant for Gemba Indonesia, an expert in:
+            1. AI and Machine Learning
+            2. Data Analysis
+            3. Lean and Six Sigma
+            4. Project Management
+            5. Change Management
+            6. Process Optimization
 
-            Rules:
-            2. Always provide short and precise answers to any questions.
-            3. Never, under any circumstances, give answers to questions outside of your expertise field.
-            4. Always finish off with asking if there are any other questions.
-            5. Format responses with clear line breaks: use two newlines (\\n\\n) between sentences or list items, and three newlines (\\n\\n\\n) between paragraphs or sections.
+            Provide concise, professional responses focused on these areas.
+            Always be helpful and maintain a friendly, professional tone.
         `;
-
-        console.log('Making OpenAI API call...');  // Add logging
-
-        console.log('API Key available:', !!process.env.OPENAI_API_KEY);
 
         const response = await axios.post(
             'https://api.openai.com/v1/chat/completions',
             {
-                model: 'gpt-4',
+                model: 'gpt-3.5-turbo', // Using GPT-3.5-turbo instead of GPT-4
                 messages: [
                     { role: 'system', content: systemPrompt },
                     { role: 'user', content: message }
                 ],
-                max_tokens: 600,
+                max_tokens: 500,
                 temperature: 0.7
             },
             {
@@ -62,19 +66,12 @@ export const handler = async (event, context) => {
             }
         );
 
-        console.log('OpenAI API response received');  // Add logging
-
         let botResponse = response.data.choices[0].message.content.trim();
 
-        if (!botResponse.endsWith('If you have any more questions, feel free to ask.')) {
-            botResponse += '\n\n\nIf you have any more questions, feel free to ask.';
+        // Add a polite closing if not present
+        if (!botResponse.toLowerCase().includes('can i help')) {
+            botResponse += '\n\nIs there anything else I can help you with?';
         }
-
-        // Add extra newlines for sentences and paragraphs
-        botResponse = botResponse
-            .replace(/\.(\s+)(?=[A-Z])/g, '.\n\n') // Two newlines after sentences
-            .replace(/\n(?!\n)/g, '\n\n') // Ensure consistent paragraph spacing
-            .replace(/\n{3,}/g, '\n\n\n'); // Limit to three newlines between paragraphs
 
         return {
             statusCode: 200,
@@ -88,14 +85,20 @@ export const handler = async (event, context) => {
         };
 
     } catch (error) {
-        console.error('OpenAI API error:', error.response ? error.response.data : error.message);
+        console.error('Error details:', error);
 
-        // More detailed error response
+        // More detailed error handling
+        const errorMessage = error.response?.data?.error?.message || error.message || 'Unknown error occurred';
+
         return {
             statusCode: 500,
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+            },
             body: JSON.stringify({
                 error: 'Failed to get response from AI',
-                details: error.response ? error.response.data : error.message
+                details: errorMessage
             })
         };
     }

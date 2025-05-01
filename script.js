@@ -190,14 +190,15 @@ handleScroll(); // Set initial state on page load
       });
 
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        const errorData = await response.json();
+        throw new Error(errorData.details || 'Failed to get response');
       }
 
       const data = await response.json();
       return data.response;
     } catch (error) {
-      console.error('Backend API error:', error);
-      throw error;
+      console.error('Chatbot error:', error);
+      return "I apologize, but I'm having trouble connecting to my services right now. Please try again in a moment.";
     }
   }
 });

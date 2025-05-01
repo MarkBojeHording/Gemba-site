@@ -692,7 +692,7 @@ img.companies-img {
   color: var(--gray-700);
 }
 
-/* Chatbot */
+/* Chatbot positioning - moved much lower on the page */
 .chatbot-container {
   position: fixed;
   bottom: 2rem;
@@ -722,11 +722,12 @@ img.companies-img {
 }
 
 .chatbot-panel {
-  position: fixed;
-  bottom: 6rem;
-  right: 2rem;
+  position: absolute;
+  bottom: 5rem; /* Position from bottom instead of top */
+  right: 0;
   width: 24rem;
   height: 34rem;
+  max-height: 80vh; /* Limit maximum height */
   background-color: white;
   border-radius: 0.75rem;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
@@ -735,13 +736,14 @@ img.companies-img {
   flex-direction: column;
   transform-origin: bottom right;
   transition: all 0.3s ease;
-  z-index: 1000;
 }
 
-.chatbot-panel.hidden {
-  transform: scale(0);
-  opacity: 0;
-  pointer-events: none;
+/* Ensure the panel stays in viewport */
+@media screen and (max-height: 700px) {
+  .chatbot-panel {
+    height: 70vh;
+    bottom: 5rem;
+  }
 }
 
 .chatbot-header {
