@@ -93,6 +93,11 @@ app.post('/api/chat', async (req, res) => {
   }
 });
 
+app.post('/chat', (req, res) => {
+  req.url = '/api/chat';
+  app._router.handle(req, res);
+});
+
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
 });
