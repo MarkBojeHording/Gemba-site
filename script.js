@@ -98,20 +98,26 @@ handleScroll(); // Set initial state on page load
     });
   }
 
-  const chatbotButton = document.getElementById('chatbotButton');
+  const chatbotButton = document.querySelector('.chatbot-button');
   const chatbotPanel = document.getElementById('chatbotPanel');
   const closeChatbot = document.getElementById('closeChatbot');
   const chatbotForm = document.getElementById('chatbotForm');
   const userInput = document.getElementById('userInput');
   const messagesContainer = document.getElementById('chatbotMessages');
 
-  chatbotButton.addEventListener('click', function() {
-    chatbotPanel.classList.toggle('hidden');
-  });
+  if (chatbotButton) {
+    chatbotButton.addEventListener('click', function() {
+      chatbotPanel.classList.toggle('hidden');
+    });
+  }
 
-  closeChatbot.addEventListener('click', function() {
-    chatbotPanel.classList.add('hidden');
-  });
+  if (closeChatbot && chatbotPanel) {
+    closeChatbot.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      chatbotPanel.classList.add('hidden');
+    });
+  }
 
   if (chatbotForm) {
     chatbotForm.addEventListener('submit', async function(e) {
