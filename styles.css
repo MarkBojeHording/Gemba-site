@@ -238,7 +238,7 @@ section {
   padding-top: 5rem;
   color: var(--white);
   position: relative;
-  background: var(--gemba);
+  /* background: var(--gemba); */
 }
 
 .hero-section::before {
