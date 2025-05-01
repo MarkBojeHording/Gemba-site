@@ -1,9 +1,9 @@
-import dotenv from 'dotenv';
-import axios from 'axios';
+const dotenv = require('dotenv');
+const axios = require('axios');
 
 dotenv.config();
 
-export const handler = async (event) => {
+exports.handler = async (event) => {
   console.log('Function invoked with event:', event);
 
   if (event.httpMethod === 'OPTIONS') {

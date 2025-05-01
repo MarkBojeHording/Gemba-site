@@ -110,11 +110,16 @@ handleScroll(); // Set initial state on page load
     chatbotPanel.classList.add('hidden');
   }
 
-  // Toggle chatbot
+  // Toggle chatbot and show welcome message
   if (chatbotButton) {
     chatbotButton.addEventListener('click', function(e) {
       e.preventDefault();
       chatbotPanel.classList.remove('hidden');
+
+      // Add welcome message if messages container is empty
+      if (messagesContainer && messagesContainer.children.length === 0) {
+        addMessage('assistant', 'Hello! I\'m the Gemba Indonesia virtual assistant. How can I help you today?');
+      }
     });
   }
 
