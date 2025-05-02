@@ -11,7 +11,12 @@
   from = "/*"
   to = "/index.html"
   status = 200
-  force = false
+
+[build.processing]
+  skip_processing = false
+[build.processing.js]
+  bundle = false
+  minify = false
 
 [functions]
   node_bundler = "esbuild"
