@@ -6,18 +6,16 @@ document.addEventListener('DOMContentLoaded', function() {
   const mobileLinks = document.querySelectorAll('.mobile-link');
   const navbar = document.getElementById('navbar');
 
-function handleScroll() {
-  if (window.scrollY > 50) {
-    navbar.classList.add('navbar-fixed');
-  } else {
-    navbar.classList.remove('navbar-fixed');
+  function handleScroll() {
+    if (window.scrollY > 50) {
+      navbar.classList.add('navbar-fixed');
+    } else {
+      navbar.classList.remove('navbar-fixed');
+    }
   }
-}
 
-window.addEventListener('scroll', handleScroll);
-handleScroll(); // Set initial state on page load
-
-
+  window.addEventListener('scroll', handleScroll);
+  handleScroll(); // Set initial state on page load
 
   menuToggle.addEventListener('click', function() {
     mobileMenu.classList.toggle('active');
@@ -114,11 +112,17 @@ handleScroll(); // Set initial state on page load
   if (chatbotButton) {
     chatbotButton.addEventListener('click', function(e) {
       e.preventDefault();
-      chatbotPanel.classList.remove('hidden');
+      console.log('Chatbot button clicked');
+      if (chatbotPanel) {
+        chatbotPanel.classList.remove('hidden');
+        console.log('Chatbot panel shown');
 
-      // Add welcome message if messages container is empty
-      if (messagesContainer && messagesContainer.children.length === 0) {
-        addMessage('assistant', 'Hello! I\'m the Gemba Indonesia virtual assistant. How can I help you today?');
+        // Add welcome message if messages container is empty
+        if (messagesContainer && messagesContainer.children.length === 0) {
+          addMessage('assistant', 'Hello! I\'m the Gemba Indonesia virtual assistant. How can I help you today?');
+        }
+      } else {
+        console.error('Chatbot panel not found');
       }
     });
   }
@@ -213,17 +217,20 @@ handleScroll(); // Set initial state on page load
 // Separate API call function
 async function getBotResponse(message) {
   try {
+    console.log('Sending chat request:', message);
     const response = await fetch('/.netlify/functions/chat', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ message })
     });
 
+    console.log('Response status:', response.status);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
 
     const data = await response.json();
+    console.log('Response data:', data);
     if (data.error) {
       throw new Error(data.error);
     }
