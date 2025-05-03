@@ -240,3 +240,31 @@ async function getBotResponse(message) {
     throw error;
   }
 }
+
+// Dropdown close logic for mobile and desktop
+document.addEventListener('DOMContentLoaded', function() {
+  // Handle all dropdowns
+  document.querySelectorAll('.dropdown-toggle').forEach(function(toggle) {
+    const dropdown = toggle.parentElement;
+
+    toggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      // Close all other dropdowns
+      document.querySelectorAll('.dropdown').forEach(function(d) {
+        if (d !== dropdown) d.classList.remove('active');
+      });
+      // Toggle this one
+      dropdown.classList.toggle('active');
+    });
+  });
+
+  // Close dropdowns when clicking outside
+  document.addEventListener('click', function(e) {
+    document.querySelectorAll('.dropdown').forEach(function(dropdown) {
+      const toggle = dropdown.querySelector('.dropdown-toggle');
+      if (!dropdown.contains(e.target) && !toggle.contains(e.target)) {
+        dropdown.classList.remove('active');
+      }
+    });
+  });
+});

@@ -1475,6 +1475,59 @@ img.companies-img {
   margin-top: 3rem;
 }
 
+.ml-action-photos .gallery-card {
+  width: 100%;
+  min-width: 0;         /* Allow the card to shrink with the grid */
+  max-width: 100%;      /* Prevent the card from exceeding its grid cell */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  height: auto;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  background: var(--white);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  border-radius: var(--radius);
+}
+
+.ml-action-photos .gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
+  gap: 2rem;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 1rem;
+  transform: translateX(-4rem);
+}
+
+.ml-action-photos .gallery-card:nth-child(3) .gallery-image {
+  height: 400px; /* or a larger value than the others */
+  aspect-ratio: unset; /* Remove if set globally */
+  object-fit: cover;
+}
+
+
+.ml-action-photos .gallery-caption {
+  margin: 0;
+  padding: 0.75rem 1rem 1rem 1rem; /* adjust as needed */
+  background: var(--gemba-light, #f0f4f9);
+  border-bottom-left-radius: var(--radius);
+  border-bottom-right-radius: var(--radius);
+  text-align: center;
+  color: var(--gray-700, #475569);
+  font-size: 1rem;
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+
+.ml-action-photos .gallery-caption {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
 .ml-action-photos h3 {
   text-align: center;
   color: var(--gemba);
@@ -1482,7 +1535,7 @@ img.companies-img {
   font-size: 1.75rem;
 }
 
-.ml-action-photos {
+.ml-action-photos .gallery-description {
   text-align: center;
   color: var(--gray-600);
   margin-bottom: 2.5rem;
@@ -1490,6 +1543,24 @@ img.companies-img {
   margin-left: auto;
   margin-right: auto;
 }
+
+.ml-action-photos .gallery-card {
+  min-width: 420px;      /* or your preferred width */
+  max-width: 480px;
+  width: 100%;
+  flex: 0 0 auto;        /* Prevent shrinking/growing */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  height: auto;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  background: var(--white);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  border-radius: var(--radius);
+}
+
 .ml-photo-flex {
   display: flex;
   gap: 2rem;
@@ -1498,25 +1569,45 @@ img.companies-img {
 }
 
 .ml-photo-card {
-  background: var(--gemba-light);
-  border-radius: var(--radius);
-  box-shadow: 0 4px 6px rgba(0,0,0,0.07);
-  padding: 1.5rem;
-  max-width: 350px;
-  width: 350px;      /* Fixed width for side-by-side */
-  flex: 0 0 350px;   /* Prevents stretching */
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: var(--gemba-light, #f0f4f9);
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 400px; /* or your preferred value */
+  margin: 0 auto;
+  height: auto;      /* Remove any fixed height */
+}
+
+.ml-action-photos .gallery-image {
+  width: 100%;
+  aspect-ratio: 4 / 3;   /* or 3 / 2, or 1 / 1 for square */
+  object-fit: cover;
+  border-radius: var(--radius);
+  display: block;
 }
 
 .ml-photo-img {
-  width: 320px;
-  height: 220px;
-  object-fit: cover;
-  border-radius: 10px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 1rem;
   margin-bottom: 1rem;
   display: block;
+  max-height: 250px;
+}
+
+.ml-photo-caption {
+  text-align: center;
+  color: var(--gray-700, #475569);
+  font-size: 1rem;
+  margin: 0;
+  padding: 0.5rem 0 0 0;
+  line-height: 1.5;
+  word-break: break-word;
 }
 
 @media (max-width: 900px) {
@@ -1565,108 +1656,82 @@ img.companies-img {
 /* Dropdown menu */
 .dropdown-menu {
   display: none;
-  position: absolute;
-  top: 110%;
-  left: 0;
-  min-width: 180px;
-  background: #183153; /* Deep blue for contrast */
-  border-radius: 12px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.14), 0 1.5px 4px rgba(0,0,0,0.04);
-  z-index: 1000;
-  padding: 8px 0;
-  border: 1px solid #2563eb;
-  animation: dropdown-fade-in 0.18s;
 }
 
-/* Show dropdown on hover */
-.dropdown:hover .dropdown-menu,
-.dropdown:focus-within .dropdown-menu {
+.dropdown.active .dropdown-menu {
   display: block;
 }
 
-/* Dropdown menu links */
-.dropdown-menu a {
-  color: #fff;
-  padding: 10px 36px 10px 24px; /* Fixed left/right padding */
-  display: block;
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 1rem;
-  border-radius: 8px;
-  margin: 2px 8px;
-  transition: background 0.18s, color 0.18s;
+/* Navbar layout */
+.navbar-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-  /* Navbar layout */
-  .navbar-flex {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
 
+@media (min-width: 900px) {
   .navbar-brand {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+    padding-left: 2.5rem;
   }
+}
 
-  @media (min-width: 900px) {
-    .navbar-brand {
-      padding-left: 2.5rem;
-    }
-  }
+.logo-image {
+  height: 2.5rem;
+}
 
-  .logo-image {
-    height: 2.5rem;
-  }
+.navbar-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--white);
+}
 
-  .navbar-title {
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--white);
-  }
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
 
-  .nav-links {
-    display: flex;
-    gap: 2rem;
-    align-items: center;
-  }
+.nav-links a,
+.dropdown-toggle {
+  color: var(--white);
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 0.5rem 0.7rem;
+  border-radius: 0.3rem;
+  transition: background 0.2s, color 0.2s;
+  text-decoration: none;
+  cursor: pointer;
+  background: none;
+  border: none;
+  display: inline-block;
+}
 
-  .nav-links a,
-  .dropdown-toggle {
-    color: var(--white);
-    font-size: 1.1rem;
-    font-weight: 600;
-    padding: 0.5rem 0.7rem;
-    border-radius: 0.3rem;
-    transition: background 0.2s, color 0.2s;
-    text-decoration: none;
-    cursor: pointer;
-    background: none;
-    border: none;
-    display: inline-block;
-  }
+.nav-links a:active,
+.nav-links a:hover,
+.dropdown-toggle:active,
+.dropdown-toggle:hover {
+  background: var(--gemba-secondary);
+  color: var(--gemba);
+}
 
-  .nav-links a:active,
-  .nav-links a:hover,
-  .dropdown-toggle:active,
-  .dropdown-toggle:hover {
-    background: var(--gemba-secondary);
-    color: var(--gemba);
-  }
+/* Dropdown styles */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
 
-  /* Dropdown styles */
-  .dropdown {
-    position: relative;
-    display: inline-block;
-  }
-
-  .dropdown-menu {
-    display: none;
-    position: absolute;
-    left: 0;
-    top: 110%;
-    }
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 110%;
+}
 
 .dropdown-menu a:hover,
 .dropdown-menu a:focus {
@@ -1868,7 +1933,7 @@ img.companies-img {
 }
 
 #navbar .navbar-flex .navbar-brand .navbar-title {
-  margin-left: 6rem !important;
+  margin-left: rem !important;
 }
 
 .briefcase-icon {
@@ -2299,7 +2364,6 @@ img.companies-img {
 
 /* --- CLEAN MOBILE NAVBAR & DROPDOWN --- */
 @media (max-width: 900px) {
-  /* Stack navbar content vertically */
   .navbar-flex {
     flex-direction: column;
     align-items: center;
@@ -2307,6 +2371,7 @@ img.companies-img {
     margin-bottom: 0 !important;
   }
   .navbar-brand {
+    display: flex;
     flex-direction: column;
     align-items: center;
     gap: 0.3rem;
@@ -2323,6 +2388,8 @@ img.companies-img {
     color: var(--white);
     text-align: center;
     width: 100%;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
   }
   .nav-links {
     display: flex !important;
@@ -2365,12 +2432,10 @@ img.companies-img {
     border: none !important;
     box-shadow: none !important;
   }
-  /* Dropdown menu: show below Services, full width, no border/shadow */
   .dropdown {
     position: relative;
     display: inline-block;
   }
-
   .dropdown-menu {
     display: none;
     position: absolute;
@@ -2384,12 +2449,9 @@ img.companies-img {
     padding: 8px 0;
     border: none;
   }
-
-  .dropdown:hover .dropdown-menu,
-  .dropdown:focus-within .dropdown-menu {
+  .dropdown.active .dropdown-menu {
     display: block;
   }
-
   .dropdown-menu a {
     color: #fff;
     padding: 10px 24px;
@@ -2404,12 +2466,12 @@ img.companies-img {
     box-shadow: none;
     transition: background 0.18s, color 0.18s;
   }
-
   .dropdown-menu a:hover,
   .dropdown-menu a:focus {
     background: #2563eb;
     color: #ffd600;
   }
+}
   /* Remove margin/padding below navbar and above hero */
   #navbar,
   .navbar-flex,
@@ -2429,6 +2491,19 @@ img.companies-img {
   .mobile-links {
     display: none !important;
   }
-
 }
+.dropdown-menu.show {
+  display: block !important;
+}
+
+.dropdown:hover .dropdown-menu,
+.dropdown:focus-within .dropdown-menu {
+  display: block;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
 }

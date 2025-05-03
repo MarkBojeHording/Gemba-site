@@ -95,25 +95,19 @@
   </style>
 </head>
 <body>
-  <!-- Navbar -->
   <nav id="navbar">
-    <div class="container">
-      <a href="/index.html" class="logo">
-        <img src="/images/LOGO_white.png" alt="Gemba Indonesia Karya Logo" class="logo-image" />
-        <span>Gemba Indonesia Karya</span>
-      </a>
-      <button class="menu-toggle" id="menuToggle">
-        <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="4" x2="20" y1="12" y2="12"></line>
-          <line x1="4" x2="20" y1="6" y2="6"></line>
-          <line x1="4" x2="20" y1="18" y2="18"></line>
-        </svg>
-      </button>
+    <div class="container navbar-flex">
+      <div class="navbar-brand">
+        <a href="/index.html" class="logo-link">
+          <img src="/images/LOGO_white.png" alt="Gemba Indonesia Karya Logo" class="logo-image" />
+          <span class="navbar-title">Gemba Indonesia Karya</span>
+        </a>
+      </div>
       <div class="nav-links" id="navLinks">
-        <a href="/index.html">Home</a>
+        <a href="/index.html#home">Home</a>
         <a href="/index.html#about">About</a>
         <div class="dropdown">
-          <a href="/index.html#services" class="dropdown-toggle">Services</a>
+          <a href="#" class="dropdown-toggle" onclick="event.preventDefault();">Services</a>
           <div class="dropdown-menu">
             <a href="strategy.html">STRATEGY</a>
             <a href="training.html">TRAININGS</a>
@@ -126,12 +120,22 @@
         </div>
         <a href="/index.html#contact">Contact</a>
       </div>
+      <button class="menu-toggle" id="menuToggle">
+        <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="4" x2="20" y1="12" y2="12"></line>
+          <line x1="4" x2="20" y1="6" y2="6"></line>
+          <line x1="4" x2="20" y1="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </nav>
+      <!-- Mobile menu -->
       <div class="mobile-menu" id="mobileMenu">
         <div class="container">
-          <a href="/index.html" class="mobile-link">Home</a>
+          <a href="/index.html#home" class="mobile-link">Home</a>
           <a href="/index.html#about" class="mobile-link">About</a>
           <div class="dropdown">
-            <a href="/index.html#services" class="dropdown-toggle mobile-link">Services</a>
+            <a href="/index.html#services" class="mobile-link dropdown-toggle">Services</a>
             <div class="dropdown-menu">
               <a href="strategy.html">STRATEGY</a>
               <a href="training.html">TRAININGS</a>
@@ -145,8 +149,7 @@
           <a href="/index.html#contact" class="mobile-link">Contact</a>
         </div>
       </div>
-    </div>
-  </nav>
+    </nav>
 
   <!-- Machine Learning Section -->
   <section class="services-section">
@@ -231,17 +234,23 @@
     <p class="gallery-description">
       Real-world moments of teams and technology driving business transformation with machine learning and KPI tracking.
     </p>
-    <div class="ml-photo-flex">
-      <div class="ml-photo-card">
-        <img src="/images/machine/computer.jpg" alt="Machine Learning in Action" class="ml-photo-img">
-        <p class="ml-photo-caption">
+    <div class="gallery-grid">
+      <div class="gallery-card">
+        <img src="/images/machine/computer.jpg" alt="Machine Learning in Action" class="gallery-image">
+        <p class="gallery-caption">
           Data scientists and analysts leveraging advanced computing to develop and monitor KPI dashboards in real time.
         </p>
       </div>
-      <div class="ml-photo-card">
-        <img src="/images/machine/report-meeting.jpg" alt="KPI Report Meeting" class="ml-photo-img">
-        <p class="ml-photo-caption">
+      <div class="gallery-card">
+        <img src="/images/machine/report-meeting.jpg" alt="KPI Report Meeting" class="gallery-image">
+        <p class="gallery-caption">
           Teams collaborating to review KPI reports, discuss insights, and make data-driven decisions for continuous improvement.
+        </p>
+      </div>
+      <div class="gallery-card">
+        <img src="/images/machine/machine-onsite.jpg" alt="Machine Onsite" class="gallery-image">
+        <p class="gallery-caption">
+          Machine learning systems deployed onsite, enabling real-time data collection and analysis for smarter operations.
         </p>
       </div>
     </div>
@@ -381,6 +390,6 @@
     </div>
   </footer>
 
-  <script type="module" src="/script.js"></script>
+  <script src="/src/script.js" defer></script>
 </body>
 </html>
