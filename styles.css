@@ -1689,6 +1689,7 @@ img.companies-img {
   font-size: 2rem;
   font-weight: 700;
   color: var(--white);
+  margin-left: 6rem;
 }
 
 .nav-links {
@@ -2125,20 +2126,57 @@ img.companies-img {
   }
 
   /* Chatbot: mobile-friendly sizing */
-  .chatbot-container {
-    bottom: 1rem;
-    right: 1rem;
-  }
-  .chatbot-button {
-    width: 2.8rem;
-    height: 2.8rem;
-  }
-  .chatbot-panel {
-    width: 95vw;
-    height: 60vh;
-    right: 0.5rem;
-    bottom: 3.5rem;
-    border-radius: 0.75rem;
+  @media (max-width: 600px) {
+    .chatbot-container {
+      bottom: 1rem;
+      right: 1rem;
+    }
+    .chatbot-button {
+      width: 3.2rem;
+      height: 3.2rem;
+      font-size: 1.5rem;
+    }
+
+      .chatbot-panel {
+        position: fixed;
+        bottom: 4.5rem;
+        left: 0.5rem;
+        right: 0.5rem;
+        width: auto;
+        max-width: calc(100vw - 1rem);
+        min-width: 0;
+        height: 60vh;
+        min-height: 320px;
+        border-radius: 0.75rem;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        display: flex;
+        flex-direction: column;
+        z-index: 1001;
+        padding: 0;
+        background: #fff;
+      }
+      .chatbot-header,
+      .chatbot-input {
+        box-sizing: border-box;
+        width: 100%;
+        min-width: 0;
+      }
+    .chatbot-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1rem;
+      font-size: 1rem;
+    }
+    .chatbot-input input {
+      font-size: 1.1rem;
+      padding: 0.7rem 1rem;
+      border-radius: 0.5rem;
+    }
+    #closeChatbot {
+      width: 40px;
+      height: 40px;
+      font-size: 1.5rem;
+    }
   }
 
   /* Navbar logo and spacing */
@@ -2506,4 +2544,107 @@ img.companies-img {
   align-items: center;
   gap: 1rem;
   text-decoration: none;
+}
+
+@media (min-width: 600px) and (max-width: 1024px) {
+  /* Example: Adjust navbar layout for tablets */
+  .navbar-flex {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+  }
+
+  .navbar-brand {
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+  }
+
+  .nav-links {
+    gap: 1.5rem;
+    font-size: 1.1rem;
+  }
+
+  /* Gallery grid: 2 cards per row on tablet */
+  .ml-action-photos .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Make cards a bit narrower for tablets */
+  .ml-action-photos .gallery-card {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  /* Adjust image height for tablet */
+  .ml-action-photos .gallery-image {
+    height: 220px;
+  }
+
+  /* Section padding for tablet */
+  .ml-action-photos {
+    padding: 2rem 0;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 1024px) {
+  .navbar-flex {
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem 0 0.7rem 0;
+  }
+
+  .navbar-brand {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.7rem;
+    width: 100%;
+  }
+
+  .logo-image {
+    height: 3rem;         /* Larger logo */
+    margin-bottom: 0.3rem;
+  }
+
+  .navbar-title {
+    font-size: 2.2rem;    /* Larger title */
+    font-weight: 800;
+    color: var(--white);
+    text-align: center;
+    width: 100%;
+    margin: 0;
+    letter-spacing: 0.01em;
+  }
+
+  .nav-links {
+    display: flex !important;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;            /* More space between links */
+    width: 100%;
+    margin-bottom: 0.3rem;
+    border: none !important;
+    box-shadow: none !important;
+    background: none !important;
+    padding-bottom: 0 !important;
+  }
+
+  .nav-links a,
+  .dropdown-toggle {
+    color: var(--white);
+    font-size: 1.4rem;    /* Larger nav links */
+    font-weight: 700;
+    padding: 0.7rem 1.2rem;
+    border-radius: 0.3rem;
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    text-decoration: none !important;
+    text-align: center;
+    flex: 1 1 0;
+    min-width: 0;
+    transition: background 0.2s, color 0.2s;
+  }
 }
