@@ -212,13 +212,31 @@ document.addEventListener('DOMContentLoaded', function() {
       messagesContainer.scrollTop = messagesContainer.scrollHeight;
     }
   }
+
+  // Desktop hover logic for dropdown
+  document.querySelectorAll('.dropdown').forEach(function(dropdown) {
+    let hoverTimeout;
+
+    dropdown.addEventListener('mouseenter', function() {
+      clearTimeout(hoverTimeout);
+      dropdown.classList.add('active');
+    });
+
+    dropdown.addEventListener('mouseleave', function() {
+      hoverTimeout = setTimeout(function() {
+        dropdown.classList.remove('active');
+      }, 150); // Small delay for smoother UX
+    });
+  });
 });
 
-// Separate API call function
+// Replace with your actual Netlify function URL!
+const NETLIFY_CHAT_URL = 'https://gemba-website.netlify.app/.netlify/functions/chat';
+
 async function getBotResponse(message) {
   try {
     console.log('Sending chat request:', message);
-    const response = await fetch('/.netlify/functions/chat', {
+    const response = await fetch(NETLIFY_CHAT_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ message })
@@ -234,7 +252,10 @@ async function getBotResponse(message) {
     if (data.error) {
       throw new Error(data.error);
     }
-    return data.response;
+    // OpenAI's response is usually in data.choices[0].message.content
+    return data.choices && data.choices[0] && data.choices[0].message
+      ? data.choices[0].message.content
+      : 'Sorry, I could not understand the response.';
   } catch (error) {
     console.error('API Error:', error);
     throw error;

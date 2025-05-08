@@ -754,11 +754,13 @@ img.companies-img {
 }
 
 .chatbot-panel {
-    position: absolute;
+    position: fixed;
     bottom: 4.5rem;
-    right: 0;
+    right: 2rem;
     width: 24rem;
+    max-width: 95vw;
     height: 32rem;
+    max-height: 90vh;
     background: white;
     border-radius: 1rem;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
@@ -768,6 +770,7 @@ img.companies-img {
     opacity: 1;
     transform: scale(1);
     transform-origin: bottom right;
+    z-index: 1001;
 }
 
 .chatbot-panel.hidden {
