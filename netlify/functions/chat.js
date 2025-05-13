@@ -1,7 +1,10 @@
-const axios = require('axios');
-require('dotenv').config();
+// netlify/functions/chat.js
+import axios from 'axios';
+import dotenv from 'dotenv';
 
-exports.handler = async (event) => {
+dotenv.config();
+
+export const handler = async (event) => {
   if (event.httpMethod === 'OPTIONS') {
     return {
       statusCode: 200,
