@@ -252,10 +252,8 @@ async function getBotResponse(message) {
     if (data.error) {
       throw new Error(data.error);
     }
-    // OpenAI's response is usually in data.choices[0].message.content
-    return data.choices && data.choices[0] && data.choices[0].message
-      ? data.choices[0].message.content
-      : 'Sorry, I could not understand the response.';
+    // The response is in data.response, not data.choices[0].message.content
+    return data.response || 'Sorry, I could not understand the response.';
   } catch (error) {
     console.error('API Error:', error);
     throw error;

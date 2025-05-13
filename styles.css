@@ -25,6 +25,7 @@ html, body {
   overflow-x: hidden;
   margin: 0;
   padding: 0;
+  padding-top: 80px; /* or whatever your navbar height is */
 }
 
 #navbar,
@@ -35,24 +36,23 @@ html, body {
   box-sizing: border-box;
 }
 
+#navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 100;
+  background: var(--gemba);
+}
+
+.hero-section {
+  padding-top: 5rem; /* Adjust to match your navbar height */
+}
+
 .hero-section,
 section {
   max-width: 100vw;
   overflow-x: hidden;
-}
-
-@media (max-width: 600px) {
-  body {
-    overflow-x: hidden;
-  }
-  #navbar .container {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-  }
-}
-
-section:first-of-type {
-  padding-top: var(--navbar-height, 3.5rem);
 }
 
 * {
@@ -61,13 +61,12 @@ section:first-of-type {
   box-sizing: border-box;
 }
 
-
-
 body {
   font-family: 'Poppins', sans-serif;
   line-height: 1.6;
   color: var(--gray-800);
   overflow-x: hidden;
+  padding-top: 0 !important;
 }
 
 a {
@@ -148,11 +147,6 @@ h4 {
   color: var(--gemba);
 }
 
-/* Section Styles */
-section {
-  padding: 5rem 0;
-}
-
 .section-header {
   text-align: center;
   margin-bottom: 4rem;
@@ -171,37 +165,6 @@ section {
   color: var(--gray-700);
 }
 
-/* Navigation */
-#navbar {
-  width: 100%;
-  padding: 2.25rem 0;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 50;
-  transition: all 0.3s ease;
-  background-color: var(--gemba);
-  height: auto; /* Remove fixed height */
-}
-
-#navbar.navbar-fixed {
-  position: fixed;
-  background-color: var(--white);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-#navbar.navbar-fixed a,
-#navbar.navbar-fixed svg {
-  color: var(--gemba);
-}
-
-#navbar .container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .logo {
   display: flex;
   align-items: center;
@@ -212,7 +175,6 @@ section {
 }
 
 .logo-image {
-  height: 3.5rem;  /* Restore logo size */
   width: auto;
   filter: brightness(0) invert(1);
   transition: filter 0.3s ease;
@@ -242,37 +204,12 @@ section {
   height: 1.5rem;
 }
 
-.mobile-menu {
-  display: none;
-  width: 100%;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: var(--white);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  animation: fadeIn 0.3s ease;
-}
-
-.mobile-menu.active {
-  display: block;
-}
-
-.mobile-link {
-  display: block;
-  padding: 0.75rem 0;
-  color: var(--gemba);
-  border-bottom: 1px solid var(--gray-200);
-}
-
-/* Hero Section */
 .hero-section {
   min-height: 100vh;
   display: flex;
   align-items: center;
-  padding-top: 5rem;
   color: var(--white);
   position: relative;
-  /* background: var(--gemba); */
 }
 
 .hero-section::before {
@@ -335,16 +272,6 @@ section {
 /* About Section */
 .about-section {
   background-color: var(--white);
-}
-
-.about-section > .container,
-.services-section > .container,
-.hero-section > .container {
-  padding-top: 5rem !important;
-}
-
-section:first-of-type {
-  padding-top: 5rem !important;
 }
 
 .about-content {
@@ -437,10 +364,6 @@ img.companies-img {
 .feature-box h4 {
   color: var(--gemba);
   margin-bottom: 0.5rem;
-}
-
-.services-section .container {
-  padding-top: 5rem !important;
 }
 
 /* Services Section */
@@ -641,6 +564,10 @@ img.companies-img {
 /* Contact Section */
 .contact-section {
   background-color: var(--white);
+  margin-top: 2rem;   /* Space above */
+  margin-bottom: 1rem; /* Space below */
+  padding-top: 1rem;   /* Optional: inner spacing */
+  padding-bottom: 1rem;
 }
 
 .contact-container {
@@ -1025,21 +952,6 @@ img.companies-img {
     font-size: 2.5rem;
   }
 
-  .nav-links {
-    display: flex;
-    gap: 2rem;
-  }
-
-  .nav-links a {
-    color: var(--white);
-    font-weight: 500;
-    transition: color 0.2s ease;
-  }
-
-  .nav-links a:hover {
-    color: var(--gemba-secondary);
-  }
-
   .menu-toggle {
     display: none;
   }
@@ -1055,10 +967,6 @@ img.companies-img {
 
   .services-grid {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  .logo-image {
-    height: 2.5rem;
   }
 }
 
@@ -1353,14 +1261,26 @@ img.companies-img {
   transform: translateY(-5px);
 }
 
-.kpi-gallery-section .gallery-image {
-  object-fit: contain;
-  background: #f8f8f8; /* Optional: adds a background if image doesn't fill the card */
-}
+
 .kpi-gallery-section .gallery-card {
-  height: 320px; /* Increase if you want the image to appear larger */
+  height: 320px; /* or your preferred value */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  overflow: hidden;
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
+.kpi-gallery-section .gallery-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;      /* This makes the image fill the card and crop as needed */
+  object-position: center center;
+  display: block;
+}
 
 .gallery-image {
   width: 100%;
@@ -1473,44 +1393,85 @@ img.companies-img {
 }
 
 .ml-action-photos {
+  width: 100%;
+  overflow: hidden;
   padding: 4rem 0;
   background: var(--white);
   margin-top: 3rem;
 }
 
-.ml-action-photos .gallery-card {
+.ml-action-photos .container {
   width: 100%;
-  min-width: 0;         /* Allow the card to shrink with the grid */
-  max-width: 100%;      /* Prevent the card from exceeding its grid cell */
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  justify-content: flex-start;
-  height: auto;
-  margin-bottom: 0;
-  padding-bottom: 0;
-  background: var(--white);
-  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-  border-radius: var(--radius);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
 .ml-action-photos .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
+  justify-content: center;
+  max-width: 1100px;
+  margin: 0 auto;
   width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  padding-bottom: 1rem;
-  transform: translateX(-4rem);
 }
 
-.ml-action-photos .gallery-card:nth-child(3) .gallery-image {
-  height: 400px; /* or a larger value than the others */
-  aspect-ratio: unset; /* Remove if set globally */
+.ml-action-photos .gallery-card {
+  max-width: 350px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.ml-action-photos .gallery-image {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+  display: block;
 }
 
+/* Mobile styles */
+@media (max-width: 600px) {
+  .ml-action-photos {
+    padding: 2rem 0;
+  }
+
+  .ml-action-photos .container {
+    padding: 0 1rem; /* Add some padding on mobile */
+  }
+
+  .ml-action-photos .gallery-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center; /* Center the cards */
+  }
+
+  .ml-action-photos .gallery-card {
+    width: 100%;
+    max-width: 320px; /* Smaller max-width on mobile */
+    height: 220px;
+    border-radius: var(--radius);
+  }
+
+  .ml-action-photos .gallery-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+/* Tablet styles */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .ml-action-photos .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .ml-action-photos .gallery-card {
+    max-width: 360px;
+  }
+}
 
 .ml-action-photos .gallery-caption {
   margin: 0;
@@ -1623,69 +1584,16 @@ img.companies-img {
     max-width: 100%;
     width: 100%;
     flex: 1 1 100%;
+    margin-bottom: 1.5rem; /* Optional: space between cards */
   }
   .ml-photo-img {
     width: 100%;
     max-width: 320px;
     height: 220px;
+    object-fit: cover; /* Ensures the image fills the card and is cropped if needed */
+    border-radius: 1rem;
+    display: block;
   }
-}
-
-/* Dropdown container */
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-/* Dropdown toggle link */
-.dropdown-toggle {
-  color: #fff;
-  background: none;
-  border: none;
-  font-weight: 600;
-  font-size: 1rem;
-  cursor: pointer;
-  padding: 10px 18px;
-  border-radius: 6px;
-  transition: background 0.2s, color 0.2s;
-}
-
-.dropdown-toggle:hover,
-.dropdown-toggle:focus {
-  background: rgba(255,255,255,0.10);
-  color: #ffd600;
-}
-
-/* Dropdown menu */
-.dropdown-menu {
-  display: none;
-}
-
-.dropdown.active .dropdown-menu {
-  display: block;
-}
-
-/* Navbar layout */
-.navbar-flex {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.navbar-brand {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-@media (min-width: 900px) {
-  .navbar-brand {
-    padding-left: 2.5rem;
-  }
-}
-
-.logo-image {
-  height: 2.5rem;
 }
 
 .navbar-title {
@@ -1693,12 +1601,6 @@ img.companies-img {
   font-weight: 700;
   color: var(--white);
   margin-left: 6rem;
-}
-
-.nav-links {
-  display: flex;
-  gap: 2rem;
-  align-items: center;
 }
 
 .nav-links a,
@@ -1733,14 +1635,45 @@ img.companies-img {
 .dropdown-menu {
   display: none;
   position: absolute;
-  left: 0;
-  top: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 100%;
+  min-width: 220px;
+  background: #222;
+  z-index: 100;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.14), 0 1.5px 4px rgba(0,0,0,0.04);
+  border-radius: 16px;
+  padding: 8px 0;
+  margin-top: 0.3rem;
+  flex-direction: column;
+  align-items: stretch;
+  border-radius: 16px;
+  overflow: hidden;
 }
 
-.dropdown-menu a:hover,
-.dropdown-menu a:focus {
-  background: #2563eb;
-  color: #ffd600;
+.dropdown-menu li {
+  margin: 0;             /* no margin */
+  border-radius: 0;      /* no border-radius on items */
+}
+
+.dropdown.active .dropdown-menu {
+  display: flex;
+}
+
+.dropdown-menu li:hover {
+  border-radius: 0;      /* no border-radius on hover */
+}
+.dropdown-menu a {
+  color: #fff !important;
+  padding: 10px 36px 10px 24px !important;
+  display: block !important;
+  text-decoration: none !important;
+  font-weight: 500 !important;
+  font-size: 1rem !important;
+  transition: background 0.18s, color 0.18s !important;
+}
+.dropdown-menu a:last-child {
+  border-bottom: none;
 }
 
 /* Optional: subtle animation */
@@ -1749,68 +1682,11 @@ img.companies-img {
   to { opacity: 1; transform: translateY(0);}
 }
 
-/* Responsive: Hide dropdown on mobile, use your mobile menu instead */
-@media (max-width: 900px) {
-  .dropdown-menu {
-    position: static;
-    min-width: 0;
-    box-shadow: none;
-    border-radius: 0;
-    border: none;
-    background: #f9f9f9;
-    padding-left: 20px;
-    display: none;
-  }
-  .dropdown.active .dropdown-menu {
-    display: block;
-  }
-}
-
-
-@media (max-width: 900px) {
-  .ml-photo-flex {
-    flex-direction: column;
-    align-items: center;
-  }
-  .ml-photo-card {
-    max-width: 100%;
-  }
-  .ml-photo-img {
-    width: 100%;
-    max-width: 320px;
-    height: 220px;
-  }
-}
-
-/* Base navbar style */
-#navbar {
-  background: var(--gemba); /* or your original blue color */
-  transition: background 0.3s, box-shadow 0.3s;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  left: 0;
-  z-index: 100;
-}
-
-/* Navbar style when scrolled */
-
-/* Nav link colors */
-#navbar .nav-links a {
-  color: #fff;
-  transition: color 0.3s;
-}
-
-#navbar.navbar-fixed .nav-links a {
-  color: var(--gemba); /* Or use your preferred green, e.g. #1e7e34 */
-}
-
 .logo-image {
-  height: 2.5rem;
   width: auto;
-  /* This filter makes the green logo appear white on blue */
   filter: brightness(0) invert(1);
   transition: filter 0.3s;
+  height: 3rem;
 }
 
 
@@ -1873,71 +1749,20 @@ img.companies-img {
   }
 }
 
-.navbar-flex {
-  width: 100%;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.navbar-left {
-  flex: 0 0 auto;
-  display: flex;
-  align-items: center;
-}
-
-.navbar-center {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-  width: max-content;
-  z-index: 1;
-}
-
-.navbar-title {
-  font-size: 2.25rem;
-  font-weight: 800;
-  color: var(--white);
-  letter-spacing: 0.02em;
-  white-space: nowrap;
-}
-
-#navbar.navbar-fixed .navbar-title {
-  color: var(--gemba);
-}
-
-.navbar-right {
-  flex: 0 0 auto;
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-  margin-left: auto;
-}
-
 @media (max-width: 768px) {
-  .logo-image {
-    height: 2rem;
-  }
-}
-
 .clients-image {
   display: block;
   max-width: 100%;
   height: auto;
   margin: 20px auto;
   text-align: center;
+  }
 }
 
 @media (min-width: 1024px) {
   .services-grid {
     grid-template-columns: repeat(3, 1fr);
   }
-}
-
-#navbar .navbar-flex .navbar-brand .navbar-title {
-  margin-left: rem !important;
 }
 
 .briefcase-icon {
@@ -2052,9 +1877,31 @@ img.companies-img {
 /* Front page project gallery: 2 rows, 3 columns */
 .project-gallery .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  margin-top: 2rem;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns on desktop */
+  gap: 2rem; /* Adjust gap as needed */
+  justify-items: center;
+  align-items: stretch;
+}
+
+.project-gallery .gallery-card {
+  width: 100%;
+  max-width: 340px;
+  height: 320px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.10);
+  background: #fff;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+}
+
+.project-gallery .gallery-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
 }
 
 #closeChatbot {
@@ -2098,6 +1945,7 @@ img.companies-img {
   .section-header p {
     font-size: 1rem;
   }
+}
 
   /* Hero section overlay for readability */
   .hero-section::before {
@@ -2182,154 +2030,22 @@ img.companies-img {
     }
   }
 
-  /* Navbar logo and spacing */
-  .logo-image {
-    height: 1.5rem;
-  }
   .logo {
     font-size: 1.2rem;
     gap: 0.5rem;
   }
 
   @media (max-width: 600px) {
+    .logo {
+      font-size: 1rem;
+      gap: 0.3rem;
+    }
     .logo-image {
       height: 1.2rem;
     }
-    .logo {
-      font-size: 1rem;
-      gap: 0.3rem;
-    }
-    #navbar .logo span {
-      font-size: 1rem;
-      font-weight: 700;
-    }
   }
 
   @media (max-width: 900px) {
-    /* Make logo/title smaller for mobile */
-    .logo-image {
-      height: 1.3rem;
-    }
-    .logo {
-      font-size: 1rem;
-      gap: 0.3rem;
-    }
-    #navbar .logo span {
-      font-size: 1rem;
-      font-weight: 700;
-    }
-
-    /* Hide desktop nav links, show hamburger */
-    .nav-links {
-      display: none !important;
-    }
-    .menu-toggle {
-      display: block !important;
-    }
-
-    /* Mobile menu styling */
-    .mobile-menu {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      width: 100vw;
-      background: var(--white);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      z-index: 100;
-      border-bottom-left-radius: 1rem;
-      border-bottom-right-radius: 1rem;
-      animation: fadeIn 0.2s;
-    }
-    .mobile-menu.active {
-      display: block;
-    }
-    .mobile-link {
-      display: block;
-      padding: 1.1rem 0;
-      color: var(--gemba);
-      border-bottom: 1px solid var(--gray-200);
-      text-align: center;
-      font-size: 1.1rem;
-      font-weight: 600;
-      transition: background 0.2s;
-    }
-    .mobile-link:last-child {
-      border-bottom: none;
-    }
-    .mobile-link:active,
-    .mobile-link:hover {
-      background: var(--gemba-light);
-      color: var(--gemba);
-    }
-    /* Make sure hamburger is aligned right */
-    .navbar-flex {
-      align-items: center;
-    }
-  }
-  @media (max-width: 900px) {
-    /* Make logo/title smaller */
-    .logo-image {
-      height: 1.3rem;
-    }
-    .logo {
-      font-size: 1rem;
-      gap: 0.3rem;
-    }
-    #navbar .logo span {
-      font-size: 1rem;
-      font-weight: 700;
-    }
-
-    /* Nav links: stack horizontally, smaller font, spacing */
-    .nav-links {
-      display: flex !important;
-      gap: 0.7rem;
-      flex: 1 1 auto;
-      justify-content: flex-end;
-      align-items: center;
-    }
-    .nav-links a {
-      font-size: 1rem;
-      padding: 0.5rem 0.3rem;
-      color: var(--white);
-      font-weight: 600;
-      border-radius: 0.3rem;
-      transition: background 0.2s, color 0.2s;
-    }
-    .nav-links a:active,
-    .nav-links a:hover {
-      background: var(--gemba-secondary);
-      color: var(--gemba);
-    }
-
-    /* Hide hamburger/toggle if present */
-    .menu-toggle {
-      display: none !important;
-    }
-
-    /* Navbar: tighter padding */
-    #navbar .container {
-      padding: 0.5rem 0.7rem;
-    }
-  }
-
-  @media (max-width: 900px) {
-    .mobile-menu {
-      display: block !important;
-      width: 100%;
-      background: var(--gemba);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      position: relative;
-      border-radius: 0;
-      padding: 0.5rem 0 0.2rem 0;
-    }
-    .mobile-menu .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 0.7rem 0;
-    }
     .logo {
       display: flex;
       flex-direction: column;
@@ -2337,210 +2053,12 @@ img.companies-img {
       margin-bottom: 0.5rem;
       text-decoration: none;
     }
-    .logo-image {
-      height: 1.7rem;
-      margin-bottom: 0.2rem;
-    }
     .logo span {
       font-size: 1.1rem;
       font-weight: 700;
       color: var(--white);
     }
-    .mobile-links {
-      display: flex;
-      justify-content: center;
-      gap: 0.5rem;
-      width: 100%;
-    }
-    .mobile-link {
-      color: var(--white);
-      font-size: 1rem;
-      font-weight: 600;
-      padding: 0.5rem 0.7rem;
-      border-radius: 0.3rem;
-      transition: background 0.2s, color 0.2s;
-      text-align: center;
-      flex: 1 1 0;
-      text-decoration: none;
-    }
-    .mobile-link:active,
-    .mobile-link:hover {
-      background: var(--gemba-secondary);
-      color: var(--gemba);
-    }
-
-    @media (max-width: 900px) {
-      .nav-links {
-        border: none !important;
-        box-shadow: none !important;
-      }
-      .nav-links a {
-        border: none !important;
-        box-shadow: none !important;
-        text-decoration: none !important;
-      }
-      /* Remove underline for active/focus/hover states */
-      .nav-links a:active,
-      .nav-links a:focus,
-      .nav-links a:hover {
-        text-decoration: none !important;
-        border: none !important;
-        box-shadow: none !important;
-      }
-    }
   }
-  @media (max-width: 900px) {
-    #navbar,
-    .navbar-flex,
-    .nav-links {
-      margin-bottom: 0 !important;
-      padding-bottom: 0 !important;
-    }
-    /* Remove margin from the next section if needed */
-    .hero-section {
-      margin-top: 0 !important;
-      padding-top: 0 !important;
-    }
-  }
-
-/* --- CLEAN MOBILE NAVBAR & DROPDOWN --- */
-@media (max-width: 900px) {
-  .navbar-flex {
-    flex-direction: column;
-    align-items: center;
-    padding: 0.7rem 0 0.2rem 0;
-    margin-bottom: 0 !important;
-  }
-  .navbar-brand {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.3rem;
-    margin-bottom: 0.5rem;
-    width: 100%;
-  }
-  .logo-image {
-    height: 1.7rem;
-    margin-bottom: 0.2rem;
-  }
-  .navbar-title {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--white);
-    text-align: center;
-    width: 100%;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-  }
-  .nav-links {
-    display: flex !important;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 0.7rem;
-    width: 100%;
-    margin-bottom: 0.2rem;
-    border: none !important;
-    box-shadow: none !important;
-    background: none !important;
-    padding-bottom: 0 !important;
-  }
-  .nav-links a,
-  .dropdown-toggle {
-    color: var(--white);
-    font-size: 1rem;
-    font-weight: 600;
-    padding: 0.5rem 0.7rem;
-    border-radius: 0.3rem;
-    background: none !important;
-    border: none !important;
-    box-shadow: none !important;
-    text-decoration: none !important;
-    text-align: center;
-    flex: 1 1 0;
-    min-width: 0;
-    transition: background 0.2s, color 0.2s;
-  }
-  .nav-links a:active,
-  .nav-links a:focus,
-  .nav-links a:hover,
-  .dropdown-toggle:active,
-  .dropdown-toggle:focus,
-  .dropdown-toggle:hover {
-    background: var(--gemba-secondary);
-    color: var(--gemba);
-    text-decoration: none !important;
-    border: none !important;
-    box-shadow: none !important;
-  }
-  .dropdown {
-    position: relative;
-    display: inline-block;
-  }
-  .dropdown-menu {
-    display: none;
-    position: absolute;
-    left: 0;
-    top: 110%;
-    min-width: 160px;
-    background: #183153;
-    border-radius: 0 0 12px 12px;
-    box-shadow: none;
-    z-index: 1000;
-    padding: 8px 0;
-    border: none;
-  }
-  .dropdown.active .dropdown-menu {
-    display: block;
-  }
-  .dropdown-menu a {
-    color: #fff;
-    padding: 10px 24px;
-    display: block;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 1rem;
-    border-radius: 8px;
-    margin: 2px 8px;
-    background: none;
-    border: none;
-    box-shadow: none;
-    transition: background 0.18s, color 0.18s;
-  }
-  .dropdown-menu a:hover,
-  .dropdown-menu a:focus {
-    background: #2563eb;
-    color: #ffd600;
-  }
-}
-  /* Remove margin/padding below navbar and above hero */
-  #navbar,
-  .navbar-flex,
-  .nav-links {
-    margin-bottom: 0 !important;
-    padding-bottom: 0 !important;
-  }
-
-  .hero-section {
-    margin-top: 0 !important;
-    padding-top: 0 !important;
-  }
-  /* Hide hamburger/toggle if present */
-  .menu-toggle,
-  .mobile-menu,
-  .mobile-link,
-  .mobile-links {
-    display: none !important;
-  }
-}
-.dropdown-menu.show {
-  display: block !important;
-}
-
-.dropdown:hover .dropdown-menu,
-.dropdown:focus-within .dropdown-menu {
-  display: block;
-}
 
 .logo-link {
   display: flex;
@@ -2550,24 +2068,6 @@ img.companies-img {
 }
 
 @media (min-width: 600px) and (max-width: 1024px) {
-  /* Example: Adjust navbar layout for tablets */
-  .navbar-flex {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem 2rem;
-  }
-
-  .navbar-brand {
-    margin-left: 1.5rem;
-    margin-right: 1.5rem;
-  }
-
-  .nav-links {
-    gap: 1.5rem;
-    font-size: 1.1rem;
-  }
-
   /* Gallery grid: 2 cards per row on tablet */
   .ml-action-photos .gallery-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -2575,7 +2075,6 @@ img.companies-img {
 
   /* Make cards a bit narrower for tablets */
   .ml-action-photos .gallery-card {
-    min-width: 0;
     max-width: 100%;
   }
 
@@ -2590,64 +2089,271 @@ img.companies-img {
   }
 }
 
-@media (min-width: 600px) and (max-width: 1024px) {
+
+@media (max-width: 600px) {
+  .training-gallery .gallery-grid {
+    flex-direction: column !important;
+    align-items: center;
+    flex-wrap: wrap !important;
+  }
+  .training-gallery .gallery-card {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .kpi-gallery-section .gallery-card {
+    height: 120px;
+    min-width: 0;
+    max-width: 100%;
+    width: 100%;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 0; /* Remove any padding */
+  }
+  .kpi-gallery-section .gallery-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;   /* This will crop and fill the card */
+    display: block;
+    border-radius: var(--radius);
+  }
+}
+
+@media (max-width: 600px) {
+  .ml-action-photos .container {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+  }
+    .ml-action-photos .gallery-grid {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 1.5rem !important;
+      align-items: center !important; /* Center the cards horizontally */
+      width: 100% !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+    .ml-action-photos .gallery-card {
+      width: 100%;
+      max-width: 350px;   /* Set a max width for the card */
+      min-width: 0;
+      height: auto;       /* Let the image set the height */
+      margin: 0 auto;     /* Center the card */
+      border-radius: var(--radius);
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+      overflow: hidden;
+    }
+    .ml-action-photos .gallery-image {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      display: block;
+      border-radius: var(--radius);
+    }
+  }
+/* --- MOBILE NAVBAR STYLES --- */
+@media (max-width: 900px) {
+  /* Hide hamburger menu on mobile */
+  .menu-toggle {
+    display: none !important;
+  }
+}
+
+/* Desktop: Remove all top margin/padding, then add padding to hero for navbar */
+@media (min-width: 901px) {
+  section,
+  .container,
+  .hero-section,
+  .hero-section > .container,
+  section:first-of-type,
+  section:first-of-type > .container,
+  .about-section > .container,
+  .services-section > .container {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+    padding-top: 0.5rem !important;
+  }
+  .hero-section {
+    padding-top: 7rem !important; /* Match your desktop navbar height */
+  }
+}
+
+/* Nuke all margin/padding from the first section and its children */
+section:first-of-type,
+.hero-section:first-of-type,
+section:first-of-type > *,
+.hero-section:first-of-type > * {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* Hero section background image always starts at the top */
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0; /* This is the key! */
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(rgba(15,40,83,0.7), rgba(15,40,83,0.7)), url('/images/collage-one.jpg') center center/cover no-repeat;
+  z-index: 1;
+}
+
+/* DESKTOP: Keep all images in a single row, no wrapping */
+@media (min-width: 901px) {
+  .lean-gallery .gallery-grid {
+    display: flex;
+    flex-direction: row;
+    gap: 2.5rem;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: nowrap;      /* Prevent wrapping: all images stay in one row */
+    margin-bottom: 3rem;
+  }
+  .lean-gallery .gallery-card {
+    width: 340px;
+    height: 180px;
+    border-radius: 1.2rem;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    padding: 0;
+    flex: 0 0 auto;         /* Prevent shrinking/growing, keep fixed size */
+  }
+  .lean-gallery .gallery-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    display: block;
+  }
+}
+
+@media (min-width: 901px) {
+  .lean-gallery {
+    padding-bottom: 4rem;
+    margin-bottom: 2.5rem;
+  }
+}
+
+/* MOBILE/TABLET: Allow stacking or scrolling as needed */
+@media (max-width: 900px) {
+  .lean-gallery .gallery-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .lean-gallery .gallery-card {
+    width: 100%;
+    max-width: 95vw;
+    height: 140px;
+  }
+}
+
+/* --- Desktop Navbar Layout --- */
+@media (min-width: 900px) {
   .navbar-flex {
-    flex-direction: column;
-    align-items: center;
-    padding: 1.5rem 0 0.7rem 0;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100% !important;
+    padding: 0 2rem !important;
   }
-
-  .navbar-brand {
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    margin-bottom: 0.7rem;
-    width: 100%;
-  }
-
-  .logo-image {
-    height: 3rem;         /* Larger logo */
-    margin-bottom: 0.3rem;
-  }
-
   .navbar-title {
-    font-size: 2.2rem;    /* Larger title */
-    font-weight: 800;
-    color: var(--white);
-    text-align: center;
-    width: 100%;
-    margin: 0;
-    letter-spacing: 0.01em;
+    margin-left: 0 !important;
+    font-size: 2rem !important;
+    text-align: left !important;
+    width: auto !important;
+    white-space: nowrap !important;
   }
-
   .nav-links {
     display: flex !important;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;            /* More space between links */
-    width: 100%;
-    margin-bottom: 0.3rem;
-    border: none !important;
-    box-shadow: none !important;
-    background: none !important;
-    padding-bottom: 0 !important;
+    gap: 2rem !important;
+    flex-wrap: nowrap !important;
+    justify-content: flex-end !important;
+    width: auto !important;
+    overflow-x: visible !important;
+    margin-bottom: 0 !important;
   }
+  #navbar {
+    min-height: 5.5rem;
+    padding-top: 0.7rem;
+    padding-bottom: 0.7rem;
+  }
+  .navbar-brand {
+    padding-left: 2rem; /* Adjust as needed */
+  }
+  .navbar-title {
+    margin-left: 5rem !important;;
+  }
+}
 
-  .nav-links a,
-  .dropdown-toggle {
-    color: var(--white);
-    font-size: 1.4rem;    /* Larger nav links */
-    font-weight: 700;
-    padding: 0.7rem 1.2rem;
-    border-radius: 0.3rem;
-    background: none !important;
-    border: none !important;
-    box-shadow: none !important;
-    text-decoration: none !important;
-    text-align: center;
-    flex: 1 1 0;
-    min-width: 0;
-    transition: background 0.2s, color 0.2s;
+/* --- Mobile Navbar Layout --- */
+@media (max-width: 900px) {
+  .navbar-flex {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    width: 100% !important;
+    padding: 0.7rem 0 0.3rem 0 !important;
+  }
+  .navbar-brand {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+    margin-bottom: 0.2rem !important;
+    gap: 0.2rem !important;
+  }
+  .logo-image {
+    height: 2.2rem !important;
+    margin-bottom: 0.1rem !important;
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .navbar-title {
+    font-size: 1.1rem !important;
+    font-weight: 700 !important;
+    color: var(--white) !important;
+    text-align: center !important;
+    margin: 0 0 0.5rem 0 !important;
+    width: 100% !important;
+    display: block !important;
+  }
+  .nav-links {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 0.7rem !important;
+    justify-content: center !important;
+    width: 100% !important;
+    margin-bottom: 0.5rem !important;
+  }
+  #navbar {
+    min-height: 0.5rem !important;
+    padding-top: 0.7rem !important;
+    padding-bottom: 0.7rem !important;
+  }
+}
+@media (max-width: 900px) {
+  body {
+    padding-top: 40px !important; /* Adjust based on mobile navbar height */
   }
 }
