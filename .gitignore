@@ -1,3 +1,5 @@
+config.php
+chat-handler.php
 .env
 # Node.js
 node_modules/

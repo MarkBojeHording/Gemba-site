@@ -112,17 +112,12 @@ document.addEventListener('DOMContentLoaded', function() {
   if (chatbotButton) {
     chatbotButton.addEventListener('click', function(e) {
       e.preventDefault();
-      console.log('Chatbot button clicked');
       if (chatbotPanel) {
         chatbotPanel.classList.remove('hidden');
-        console.log('Chatbot panel shown');
-
         // Add welcome message if messages container is empty
         if (messagesContainer && messagesContainer.children.length === 0) {
           addMessage('assistant', 'Hello! I\'m the Gemba Indonesia virtual assistant. How can I help you today?');
         }
-      } else {
-        console.error('Chatbot panel not found');
       }
     });
   }
@@ -228,41 +223,8 @@ document.addEventListener('DOMContentLoaded', function() {
       }, 150); // Small delay for smoother UX
     });
   });
-});
 
-// Replace with your actual Netlify function URL!
-const NETLIFY_CHAT_URL = 'https://gemba-website.netlify.app/.netlify/functions/chat';
-
-async function getBotResponse(message) {
-  try {
-    console.log('Sending chat request:', message);
-    const response = await fetch(NETLIFY_CHAT_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message })
-    });
-
-    console.log('Response status:', response.status);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
-    const data = await response.json();
-    console.log('Response data:', data);
-    if (data.error) {
-      throw new Error(data.error);
-    }
-    // The response is in data.response, not data.choices[0].message.content
-    return data.response || 'Sorry, I could not understand the response.';
-  } catch (error) {
-    console.error('API Error:', error);
-    throw error;
-  }
-}
-
-// Dropdown close logic for mobile and desktop
-document.addEventListener('DOMContentLoaded', function() {
-  // Handle all dropdowns
+  // Dropdown close logic for mobile and desktop
   document.querySelectorAll('.dropdown-toggle').forEach(function(toggle) {
     const dropdown = toggle.parentElement;
 
@@ -287,3 +249,32 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
+
+// Use the PHP backend for chatbot
+const CHAT_API_URL = 'https://www.gembaindonesia.com/chat-handler.php';
+
+async function getBotResponse(message) {
+  try {
+    console.log('Sending chat request:', message);
+    const response = await fetch(CHAT_API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message })
+    });
+
+    console.log('Response status:', response.status);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    console.log('Response data:', data);
+    if (data.error) {
+      throw new Error(data.error);
+    }
+    return data.response || 'Sorry, I could not understand the response.';
+  } catch (error) {
+    console.error('API Error:', error);
+    throw error;
+  }
+}
