@@ -2181,6 +2181,7 @@ img.companies-img {
     padding-top: 0 !important;
     margin-top: 0 !important;
     padding-top: 0.5rem !important;
+    margin-bottom: 1rem;
   }
   .hero-section {
     padding-top: 7rem !important; /* Match your desktop navbar height */
